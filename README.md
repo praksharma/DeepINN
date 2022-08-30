@@ -1,2 +1,2 @@
 # DeepINN
-A fork on DeepXDE
+A fork of DeepXDE for PyTorch only.
