@@ -1,3 +1,6 @@
-__all__= ["Geometry"]
+__all__= [
+    "Geometry",
+    "Interval"]
 
 from .geometry import Geometry
+from .geometry_1d import 
