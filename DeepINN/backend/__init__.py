@@ -18,9 +18,7 @@ _enabled_apis = set()
 def _gen_missing_api(api, mod_name):
     def _missing_api(*args, **kwargs):
         raise ImportError(
-            'API "%s" is not supported by backend "%s".'
-            " You can switch to other backends by setting"
-            " the DDE_BACKEND environment." % (api, mod_name)
+            'API "%s" is not supported by backend "%s"' % (api, mod_name)
         )
 
     return _missing_api
@@ -29,8 +27,9 @@ def _gen_missing_api(api, mod_name):
 def load_backend(mod_name):
     if mod_name not in ["pytorch"]:
         raise NotImplementedError("Please Install PyTorch: %s" % mod_name)
-
-    print("Using backend: %s\n" % mod_name, file=sys.stderr, flush=True)   # print backend name
+    else:
+        print("Using default backend: PyTorch\n", file=sys.stderr, flush=True)   # print backend name like an error # https://www.askpython.com/python/python-stdin-stdout-stderr
+    
     mod = importlib.import_module(".%s" % mod_name.replace(".", "_"), __name__) # import a module and assign to a variable. Here we import pytorch (folder) and assign it to this mod
     thismod = sys.modules[__name__] # __name__ = __main__ for this module.
     # log backend name
