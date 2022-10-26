@@ -8,16 +8,19 @@ DeepINN
 `DeepINN <https://github.com/praksharma/DeepINN>`_ is a fork of `DeepXDE <https://deepxde.readthedocs.io/en/latest/index.html>`_ with more advanced tools for solving inverse boundary condition problems using physics-informed neural networks.
 
 
-.. toctree::
-   :maxdepth: 2
-   :hidden:
-   :caption: Contents:
 
-   Options/demo1.rst
 
 .. toctree::
    :maxdepth: 2
    :hidden:
-   :caption: Contents1:
+   :caption: Installation:
 
-   Options/demo2.rst
+   Install/Installation.rst
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+   :caption: Sphinx:
+
+   Options/Sphinx_installation.rst
+   Options/Sphinx_Basics.rst
