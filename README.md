@@ -1,6 +1,6 @@
 # DeepINN
 
-[![Documentation Status](https://readthedocs.org/projects/deepinn/badge/?version=latest)](https://deepinn.readthedocs.io/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/deepinn/badge/?version=latest)](https://deepinn.readthedocs.io/en/latest/index.html?badge=latest)
 [![License](https://img.shields.io/github/license/praksharma/DeepINN)](https://github.com/praksharma/DeepINN/blob/main/LICENSE)
 
 
