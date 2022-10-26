@@ -54,3 +54,6 @@ html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
 
 #highlight_language = 'python'
+
+# The master toctree document.
+master_doc = "index"
