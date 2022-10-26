@@ -1,20 +1,22 @@
-Section
-=======
+Sphinx Tutorial
+===============
+Click on "View page source" and then click on "Raw" to see the source code.
 
-subsection
+A subsection
 ------
 
-just a heading 
+A heading 
 **************
 
-hello
+A label
 -----
 .. _label:
 
-*italic*
-**bold**
+*italic text*
 
-``this is a code``
+**bold text**
+
+``this is a code block``
 
 * bullet 1
     * sub bullet
@@ -27,17 +29,17 @@ hello
 
 
 .. caution:: 
-    Do not use Windows.
+    This is a caution.
 
 .. danger::
-    delete system32
+    This is a warning.
 
 .. note::
-    use apptainer on HPC
+    This is a note.
 
 .. code-block:: python
-    :caption: how to cook python
-    :name: this is a name
+    :caption: Code block caption
+    :name: This is a name
 
     import numpy 
     print 'Explicit is better than implicit.'
@@ -53,9 +55,9 @@ Another way::
 
 .. images:: https://deepxde.readthedocs.io/en/latest/_images/pinn.png
 
-use this link to generate tables:  https://www.tablesgenerator.com/text_tables
+Use this link to generate tables:  https://www.tablesgenerator.com/text_tables
 
-.. table:: table title
+.. table:: Table title
 
     +----+-----+----+-----+----+
     | f  | g   | bv | b   | bc |
@@ -69,4 +71,4 @@ use this link to generate tables:  https://www.tablesgenerator.com/text_tables
 
 Hyperlink relative files. :doc:`/Options/demo2` 
 
-refer relative section: :ref:`this is a label link <label>` 
+Refer relative section: :ref:`this is a label link <label>` 
