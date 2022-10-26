@@ -27,3 +27,4 @@ DeepINN
    ReadtheDocs/ReadTheDocs.rst
    ReadtheDocs/Markdown_support.rst
    ReadtheDocs/Markdown
+   ReadtheDocs/Jupyter_notebook
