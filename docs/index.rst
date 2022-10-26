@@ -20,7 +20,10 @@ DeepINN
 .. toctree::
    :maxdepth: 2
    :hidden:
-   :caption: Sphinx:
+   :caption: ReadtheDocs:
 
-   Options/Sphinx_installation.rst
-   Options/Sphinx_Basics.rst
+   ReadtheDocs/Sphinx_installation.rst
+   ReadtheDocs/Sphinx_Basics.rst
+   ReadtheDocs/ReadTheDocs.rst
+   ReadtheDocs/Markdown_support.rst
+   ReadtheDocs/Markdown

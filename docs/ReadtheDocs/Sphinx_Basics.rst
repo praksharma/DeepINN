@@ -3,13 +3,13 @@ Sphinx Tutorial
 Click on "View page source" and then click on "Raw" to see the source code.
 
 A subsection
-------
+------------
 
 A heading 
 **************
 
 A label
------
+-------
 .. _label:
 
 *italic text*
@@ -53,7 +53,7 @@ Another way::
     import torch
     print(torch.__version__)
 
-.. images:: https://deepxde.readthedocs.io/en/latest/_images/pinn.png
+``.. images:: https://deepxde.readthedocs.io/en/latest/_images/pinn.png``
 
 Use this link to generate tables:  https://www.tablesgenerator.com/text_tables
 
@@ -69,6 +69,6 @@ Use this link to generate tables:  https://www.tablesgenerator.com/text_tables
     | fs | fgf | sf | sdf | s  |
     +----+-----+----+-----+----+
 
-Hyperlink relative files. :doc:`/Options/demo2` 
+Hyperlink relative files. :doc:`/ReadtheDocs/Sphinx_installation` 
 
 Refer relative section: :ref:`this is a label link <label>` 

@@ -1,5 +1,5 @@
 Sphinx Installation
-===============
+===================
 
 `Here <https://docs.readthedocs.io/en/stable/tutorial/>`_ is a nice tutorial about Read the Docs.
 
