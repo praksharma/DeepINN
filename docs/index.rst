@@ -28,3 +28,4 @@ DeepINN
    ReadtheDocs/Markdown_support.rst
    ReadtheDocs/Markdown
    ReadtheDocs/Jupyter_notebook
+   ReadtheDocs/Refresh toctree

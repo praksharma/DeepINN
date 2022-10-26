@@ -1,4 +1,4 @@
-# A Markdown example
+# A Markdown example 
 
 We can't preview a markdown file in RST preview too, so we need to download a separate makrdown preview tool in VS Code.
 
@@ -13,7 +13,7 @@ We can also use Latex I guess.
 
 $$u_{xx}=\alpha \frac{\partial u^2}{\partial ^2 x}$$
 
-I think we can't type equations this way. but we can use `nbsphinx` to include `ipynb` files. Then we cna simply write Iron Python files and include it in the `.. toctree`.
+I think we can't type equations this way. but we can use `nbsphinx` to include `ipynb` files. Then we can simply write Iron Python files and include it in the `.. toctree`.
 
 First we need to install `nbsphinx`.
 
