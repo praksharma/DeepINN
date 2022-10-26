@@ -1,5 +1,5 @@
 Install and Setup
-================
+=================
 
 DeepINN is still in early development stage and isn't very useful at all. One can access the pre-release `here <https://github.com/praksharma/DeepINN/releases/tag/v0.1.0>`_.
 
