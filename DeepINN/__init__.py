@@ -5,7 +5,7 @@ from . import backend
 from . import config
 # from . import callbacks
 # from . import data
-#from . import geometry
+from . import geometry
 # from . import gradients as grad
 # from . import BC
 # from . import nn
