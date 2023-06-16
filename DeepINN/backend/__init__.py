@@ -8,9 +8,11 @@ import sys
 def load_backend():
     try:
         import torch
-        print("Using default backend: PyTorch\n", file=sys.stderr, flush=True)   # print backend name like an error # https://www.askpython.com/python/python-stdin-stdout-stderr
+        print("Using default backend: PyTorch", file=sys.stderr, flush=True)   # print backend name like an error # https://www.askpython.com/python/python-stdin-stdout-stderr
+        print("Using Pytorch: ",torch.__version__, file=sys.stderr, flush=True) # print pytorch version
+
     except ImportError:
         raise ImportError('PyTorch not found.')
-        
+
 load_backend()
 
