@@ -2,6 +2,7 @@
 from .__about__ import __version__
 
 from . import backend
+from . import config
 # from . import callbacks
 # from . import data
 from . import geometry
