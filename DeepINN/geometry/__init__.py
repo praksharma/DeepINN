@@ -1,6 +1,5 @@
-__all__= [
-    "Geometry",
-    "Interval"]
-
-from .geometry import Geometry
-from .geometry_1d import 
+# Make the subdirectory callable
+from . import domains
+from . import conditions
+from . import samplers
+from . import spaces

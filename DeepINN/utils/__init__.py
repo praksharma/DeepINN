@@ -1,18 +1,27 @@
-# Helper functions
+"""Useful helper methods for the definition and evaluation of a problem.
 
-import importlib
-import sys
+For the creation of conditions, some differential operators are implemented under
+torchphysics.utils.differentialoperators.
 
-from . import array_ops_compat
-from .external import *
-from .internal import *
-from ..backend import backend_name
+For the evaluation of the trained model, some plot and animation functionalities are provided.
+They can give you a rough overview of the determined solution. These lay under
+torchphysics.utils.plotting
+"""
+from .differentialoperators import (laplacian,
+                                    grad,
+                                    div,
+                                    jac,
+                                    partial,
+                                    convective,
+                                    rot, 
+                                    normal_derivative, 
+                                    sym_grad, 
+                                    matrix_div)
 
-def _load_backend(mod_name):
-    mod = importlib.import_module(".%s"% mod_name, __name__) # import module to a variable
-    thismod = sys.modules[__name__] # points this file
+from .data import PointsDataset, PointsDataLoader, DeepONetDataLoader
 
-    for api, obj in mod.__dict__.items():
-        setattr(thismod, api, obj)
+from .user_fun import UserFunction
+from .plotting import plot, animate, scatter
+from .evaluation import compute_min_and_max
 
-_load_backend(backend_name.replace(".","_"))
+#from .callbacks import (WeightSaveCallback, PlotterCallback, TrainerStateCheckpoint)

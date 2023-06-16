@@ -1,11 +1,17 @@
-# Set up configuration such as the data-types, number generation seeds etc.
+import torch
 
-from .real import Real # we can set the default datatype
-import random # for random number generating seeds
-from .backend import backend_name, torch
-import numpy as np
+class Config:
+    """
+    Set up configuration such as the data-types, number generation seeds etc.
+    We use this Config object to apply during the training. So, one doesn't need to apply seeds in each jupyter notebook cell.
+    """
+    def __init__(self, float_type=torch.float32, random_seed=42):
+        self.float_type = float_type
+        self.random_seed = random_seed
+        # Add more configuration parameters as needed
 
+    def apply_seeds(self):
+        torch.manual_seed(self.random_seed)
 
-# Default float type
-# This can be changed to float64 but requires more memory and is more expensive.
-real = Real(32)
+    def apply_float_type(self):
+        torch.set_default_dtype(self.float_type)
