@@ -3,4 +3,4 @@ __all__= [
     "Interval"]
 
 from .geometry import Geometry
-from .geometry_1d import 
+#from .geometry_1d import 
