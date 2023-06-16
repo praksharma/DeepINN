@@ -1,0 +1,3 @@
+1. Geometry added but lot of bloats. Clean up geometry folder.
+2. Clean up utils folder.
+3. Create a python venv for sharpely and scipy etc. just store the requirements.txt file 
