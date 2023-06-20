@@ -9,5 +9,3 @@ print(dp.__dict__["__about__"])
 #print()
 
 print(dp.config.Config)
-
-dp.geometry.domains.Point()
