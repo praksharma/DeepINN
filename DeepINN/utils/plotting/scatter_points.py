@@ -5,7 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-def scatter(subspace, *samplers):
+def scatter(subspace, *samplers, dpi=False, save=False):
     """Shows (one batch) of used points in the training. If the sampler is
     static, the shown points will be the points for the training. If not
     the points may vary, depending of the sampler. 
@@ -19,12 +19,15 @@ def scatter(subspace, *samplers):
         The diffrent samplers for which the points should be plotted.
         The plot for each sampler will be created in the order there were
         passed in.
-    save : 
+    dpi : dpi of the saved figure.
+    save : A flag to save figure.
+
+    In future, I might use a dictionary to add more functions.
 
     Returns
     -------
     fig : matplotlib.pyplot.figure
-        The figure handle of the plot.
+        The figure handle of the plot. The Figure is created on the STDOUT, so actual return isn't required.
     """
     assert subspace.dim <= 3, "Can only scatter points in dimensions <= 3."
 
@@ -37,11 +40,11 @@ def scatter(subspace, *samplers):
         #scatter_fn(numpy_points, labels)
 
     if subspace.dim == 1:
-        _scatter_1D(numpy_points, labels)
+        _scatter_1D(numpy_points, labels, dpi, save)
     elif subspace.dim == 2:
-        _scatter_2D(numpy_points, labels)
+        _scatter_2D(numpy_points, labels, dpi, save)
     else:
-        _scatter_3D(numpy_points, labels)
+        _scatter_3D(numpy_points, labels, dpi, save)
 
 def _create_labels(subspace):
     labels = []
@@ -63,24 +66,28 @@ def _choose_scatter_function(space_dim):
         return _scatter_3D  
 
 
-def _scatter_1D(points, labels):
+def _scatter_1D(points, labels, dpi, save):
     fig = plt.figure()
     ax = fig.add_subplot()
     ax.grid()
     ax.scatter(points, np.zeros_like(points))
     ax.set_xlabel(labels[0])
+    if save:
+        plt.savefig('geom.jpg', dpi = dpi,bbox_inches='tight',transparent=True)
 
 
-def _scatter_2D(points, labels):
+def _scatter_2D(points, labels, dpi, save):
     fig = plt.figure()
     ax = fig.add_subplot()
     ax.grid()
     ax.scatter(points[:, 0], points[:, 1])
     ax.set_xlabel(labels[0])
     ax.set_ylabel(labels[1])
+    if save:
+        plt.savefig('geom.jpg', dpi = dpi,bbox_inches='tight',transparent=True)
 
 
-def _scatter_3D(points, labels):
+def _scatter_3D(points, labels, dpi, save):
     fig = plt.figure()
     ax = fig.add_subplot(projection='3d')
     ax.grid()
@@ -88,3 +95,5 @@ def _scatter_3D(points, labels):
     ax.set_xlabel(labels[0])
     ax.set_ylabel(labels[1])
     ax.set_zlabel(labels[2])
+    if save:
+        plt.savefig('geom.jpg', dpi = dpi,bbox_inches='tight',transparent=True)
