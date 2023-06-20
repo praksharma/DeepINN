@@ -19,6 +19,7 @@ def scatter(subspace, *samplers):
         The diffrent samplers for which the points should be plotted.
         The plot for each sampler will be created in the order there were
         passed in.
+    save : 
 
     Returns
     -------
@@ -27,14 +28,20 @@ def scatter(subspace, *samplers):
     """
     assert subspace.dim <= 3, "Can only scatter points in dimensions <= 3."
 
-    fig, ax, scatter_fn = _choose_scatter_function(subspace.dim)
-    ax.grid()
+    #scatter_fn = _choose_scatter_function(subspace.dim)
+    
     for sampler in samplers:
         points = sampler.sample_points()[:, list(subspace.keys())]
         numpy_points = points.as_tensor.detach().cpu().numpy()
         labels = _create_labels(subspace)
-        scatter_fn(ax, numpy_points, labels)
-    return fig
+        #scatter_fn(numpy_points, labels)
+
+    if subspace.dim == 1:
+        _scatter_1D(numpy_points, labels)
+    elif subspace.dim == 2:
+        _scatter_2D(numpy_points, labels)
+    else:
+        _scatter_3D(numpy_points, labels)
 
 def _create_labels(subspace):
     labels = []
@@ -47,30 +54,36 @@ def _create_labels(subspace):
     return labels
 
 def _choose_scatter_function(space_dim):
-    fig = plt.figure()
+    
     if space_dim == 1:
-        ax = fig.add_subplot()
-        return fig, ax, _scatter_1D
+        return _scatter_1D
     elif space_dim == 2:
-        ax = fig.add_subplot()
-        return fig, ax, _scatter_2D    
+        return _scatter_2D    
     else:
-        ax = fig.add_subplot(projection='3d')
-        return fig, ax, _scatter_3D  
+        return _scatter_3D  
 
 
-def _scatter_1D(ax, points, labels):
+def _scatter_1D(points, labels):
+    fig = plt.figure()
+    ax = fig.add_subplot()
+    ax.grid()
     ax.scatter(points, np.zeros_like(points))
     ax.set_xlabel(labels[0])
 
 
-def _scatter_2D(ax, points, labels):
+def _scatter_2D(points, labels):
+    fig = plt.figure()
+    ax = fig.add_subplot()
+    ax.grid()
     ax.scatter(points[:, 0], points[:, 1])
     ax.set_xlabel(labels[0])
     ax.set_ylabel(labels[1])
 
 
-def _scatter_3D(ax, points, labels):
+def _scatter_3D(points, labels):
+    fig = plt.figure()
+    ax = fig.add_subplot(projection='3d')
+    ax.grid()
     ax.scatter(points[:, 0], points[:, 1], points[:, 2])
     ax.set_xlabel(labels[0])
     ax.set_ylabel(labels[1])
