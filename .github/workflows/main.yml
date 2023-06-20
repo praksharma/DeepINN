@@ -1,5 +1,5 @@
 name: DeepINN CI
-run-name: ${{ github.actor }} is testing out the code 🚀
+run-name: ${{ github.actor }} is testing the code 🚀
 on:
   push:
     branches:
