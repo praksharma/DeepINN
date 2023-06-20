@@ -10,3 +10,6 @@ docs/_build/
 
 # VSCode
 .vscode/
+
+# Python virtual environment
+.venv/
