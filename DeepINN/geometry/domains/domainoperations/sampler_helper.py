@@ -4,7 +4,8 @@ Since Union/Cut/Intersection follow the same idea for sampling for a given numbe
 import torch
 import warnings
 
-from torchphysics.problem.spaces.points import Points
+from ....geometry.spaces.points import Points # some relative path fixing
+#from torchphysics.problem.spaces.points import Points
 
 
 def _inside_random_with_n(main_domain, domain_a, domain_b, n, params, invert, device):
