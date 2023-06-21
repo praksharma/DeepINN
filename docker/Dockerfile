@@ -1,6 +1,8 @@
 FROM pytorch/pytorch:latest
 LABEL description="DeepINN with PyTorch and GPU support"
 
+ENV PYTHONPATH="/workspace"
+
 COPY docker/requirements.txt /workspace
 COPY DeepINN /workspace/DeepINN
 WORKDIR /workspace
