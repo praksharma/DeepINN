@@ -1,8 +1,8 @@
 FROM pytorch/pytorch:latest
 LABEL description="DeepINN with PyTorch and GPU support"
 
-COPY requirements.txt /workspace
-COPY ../DeepINN /workspace/
+COPY docker/requirements.txt /workspace
+COPY DeepINN /workspace/DeepINN
 WORKDIR /workspace
 RUN pip3 install -r requirements.txt 
 EXPOSE 8888/tcp
