@@ -1,0 +1,12 @@
+ipython
+jupyter
+jupyterlab
+notebook
+matplotlib
+numpy
+scikit-learn
+scikit-optimize
+scipy
+shapely
+trimesh
+rtree
