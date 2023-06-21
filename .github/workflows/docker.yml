@@ -1,4 +1,5 @@
 name: docker_container
+run-name: ${{ github.actor }} is building the docker image 🚀
 
 on:
   push:
