@@ -1,4 +1,4 @@
-name: docker_container
+name: Docker Container
 run-name: ${{ github.actor }} is building the docker image 🚀
 
 on:
