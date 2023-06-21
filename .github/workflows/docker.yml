@@ -28,4 +28,4 @@ jobs:
           context: .
           file: ./docker/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/DeepINN:pre-release
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/deepinn:pre-release
