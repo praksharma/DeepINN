@@ -39,7 +39,7 @@ python test.py
 ```
 
 ## Docker image
-Pull the image with suitable tagname:
+Pull the image with suitable tagname. The image is available [here](https://hub.docker.com/r/prakhars962/deepinn).
 
 ```sh
 docker pull prakhars962/deepinn:tagname
