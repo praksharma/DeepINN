@@ -42,7 +42,7 @@ python test.py
 Pull the image with suitable tagname:
 
 ```sh
-docker push prakhars962/deepinn:tagname
+docker pull prakhars962/deepinn:tagname
 ```
 ### CPU Only
 The image opens a jupyter server by default. 
