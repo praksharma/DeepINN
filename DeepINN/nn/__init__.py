@@ -1,1 +1,1 @@
-from .models import BaseNetwork
+from .models import BaseNetwork, FullyConnected
