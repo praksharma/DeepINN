@@ -1,1 +1,1 @@
-pass
+from .boundary_loss import DirichletBC
