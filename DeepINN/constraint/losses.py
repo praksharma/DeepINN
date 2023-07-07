@@ -52,6 +52,15 @@ class PDE():
     """
     PDE loss condition.
     We move everything in the PDE to the left side, resulting a RHS with zeros.
+
+    geom : the geometry
+        must be a domain available in dp.domains
+    sampling_strategy: sampling method
+        see strategy_dict for available options
+    n_points: number of points to sample
+        must be a natural number
+    filter_fn: sample points based on a function. This is not implemented yet.
+        must be a function
     """
 
     def __init__(self, geom, sampling_strategy, no_points, filter_fn = None) -> None:
