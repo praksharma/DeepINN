@@ -1,1 +1,4 @@
-from .boundary_loss import DirichletBC
+from .losses import DirichletBC, PDE
+from .templates import *
+
+from .gradients import grad
