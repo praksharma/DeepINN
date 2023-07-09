@@ -1,6 +1,0 @@
-1. Geometry added but lot of bloats. Clean up geometry folder.
-2. Clean up utils folder.
-3.
-4. Move everything after contribution in the readme.md to the docs.
-
-5. Implement the prescribed BC part in constraint/ boundary_loss dirichletBC 

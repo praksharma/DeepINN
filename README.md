@@ -5,6 +5,7 @@
 [DeepINN](https://github.com/praksharma/DeepINN) is a deep-learning framework for solving forward  and inverse problem involving PDEs using physics-informed neural networks (PINNs).
 
 * The geometry module has been borrowed from [TorchPhysics](https://github.com/boschresearch/torchphysics).
+* [TODO list](todo.md).
 
 # Contribution
 Create a `venv` in the root of the repo. Here the assumption is that the `python` is symlink to `python3`.
@@ -84,4 +85,3 @@ The only solution is to delete them one by one using the IMAGE_ID.
 ```sh
 docker image rm -f IMAGE_ID
 ```
-
