@@ -1,4 +1,4 @@
 from .losses import DirichletBC, PDE
 from .templates import *
 
-from .gradients import grad
+# from .gradients import grad
