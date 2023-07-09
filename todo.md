@@ -1,5 +1,6 @@
 # TODO list
 
+Last work : `DeepINN/constraint/gradients.py`
 ## Geometry
 - [ ] Geometry added but lot of bloats from TorchPhysics. Clean up geometry folder.
 - [ ]  Clean up utils folder.
