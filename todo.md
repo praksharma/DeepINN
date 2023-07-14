@@ -7,7 +7,7 @@ Last work : `DeepINN/constraint/gradients.py`
 ## Gradients
 - [x] Implement basic gradients.
 - [ ] Implement gradient for multiple output neurons.
-- [ ] Do we need retain_graph=True
+- [ ] Do we need retain_graph=True ?
 
 ## Constraints
 - [X]  Implement the prescribed BC part in constraint/ boundary_loss dirichletBC.
@@ -20,7 +20,7 @@ Last work : `DeepINN/constraint/gradients.py`
 
 ## Tutorials
 - [x] Basic geometry tutorials.
-- [ ] Constraints tutorials.
+- [x] Constraints tutorials.
 
 ## Misc
 - [ ] Migrate to JupyterBooks. 
