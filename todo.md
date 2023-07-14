@@ -4,6 +4,8 @@ Last work : `DeepINN/constraint/gradients.py`
 ## Geometry
 - [ ] Geometry added but lot of bloats from TorchPhysics. Clean up geometry folder.
 - [ ] Clean up utils folder.
+## Gradients
+- [x] Implement basic gradients.
 - [ ] Implement gradient for multiple output neurons.
 - [ ] Do we need retain_graph=True
 
