@@ -1,6 +1,6 @@
 __all__ = ["jacobian", "hessian"] # callable classes
 
-from typing import Any
+#from typing import Any
 import torch
 
 """
@@ -53,16 +53,28 @@ class Jacobian():
         self.X = X
         self.y = y
 
-        self.dim_X = X.size()[1]
-        self.dim_y = y.size()[1]
+        # calculate the number of columns if the tensor isn't 1D. 
+        self.dim_X = self.X.size()[1] if len(self.X.size()) > 1 else 1
+        self.dim_y = self.y.size()[1] if len(self.y.size()) > 1 else 1
 
-    def __call__(self, i, j) -> Any:
+    def __call__(self, i = 0, j = 0):
         """
         Call method is a special method that allows an object to be called as if it were a function.
+
+        i = 0, since we haven't implemented it for multiple output neurons.
         """
 
         # Some dimension checks.
         if not 0 <= i < self.dim_y:
             raise ValueError(f"i={i} is not valid.")
         if not 0 <= j < self.dim_X:
-            raise ValueError(f"i={j} is not valid.")
+            raise ValueError(f"j={j} is not valid.")
+        
+        # for 1D tensors
+        if len(self.X.size()) == 1:
+            all_jacobian = torch.autograd.grad(self.y[i], self.X)[0]
+            return all_jacobian#[:, [j]]
+        # This only allows gradients with 1 output neuron.
+        all_jacobian = torch.autograd.grad(self.y, self.X,grad_outputs=torch.ones_like(self.y), create_graph=True,)[0]
+        
+        return all_jacobian[:, [j]]
