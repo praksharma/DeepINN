@@ -5,7 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-def scatter(subspace, *samplers, dpi=False, save=False):
+def scatter(subspace, *samplers, dpi=100, save=False):
     """Shows (one batch) of used points in the training. If the sampler is
     static, the shown points will be the points for the training. If not
     the points may vary, depending of the sampler. 
@@ -67,7 +67,7 @@ def _choose_scatter_function(space_dim):
 
 
 def _scatter_1D(points, labels, dpi, save):
-    fig = plt.figure()
+    fig = plt.figure(dpi=dpi)
     ax = fig.add_subplot()
     ax.grid()
     ax.scatter(points, np.zeros_like(points))
@@ -77,7 +77,7 @@ def _scatter_1D(points, labels, dpi, save):
 
 
 def _scatter_2D(points, labels, dpi, save):
-    fig = plt.figure()
+    fig = plt.figure(dpi=dpi)
     ax = fig.add_subplot()
     ax.grid()
     ax.scatter(points[:, 0], points[:, 1])
@@ -88,7 +88,7 @@ def _scatter_2D(points, labels, dpi, save):
 
 
 def _scatter_3D(points, labels, dpi, save):
-    fig = plt.figure()
+    fig = plt.figure(dpi=dpi)
     ax = fig.add_subplot(projection='3d')
     ax.grid()
     ax.scatter(points[:, 0], points[:, 1], points[:, 2])

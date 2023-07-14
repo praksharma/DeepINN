@@ -1,8 +1,18 @@
+from .gradients import Jacobian
 import torch
 
-def burgers_pde(X, y):
+# TODO
+def test_function(X, y):
     """
-    The burgers equation.
+    x: array_like, N x D_in
+    y: array_like, N x D_out
+    """
+    return x * np.sin(5 * x)
+def Laplace(X, y):
+    """
+    The laplace equation.
+
+    u_xx + u_yy
     """
     dy_x = dde.grad.jacobian(y, x, i=0, j=0)
     dy_t = dde.grad.jacobian(y, x, i=0, j=1)
