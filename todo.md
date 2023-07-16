@@ -10,7 +10,7 @@ Last work : `DeepINN/constraint/gradients.py`
 - [ ] Do we need retain_graph=True ?
 
 ## Constraints
-- [X]  Implement the prescribed BC part in constraint/ boundary_loss dirichletBC.
+- [X] Implement the prescribed BC part in constraint/ boundary_loss dirichletBC.
 - [X] Implement PDE loss constraint.
 - [ ] Implement gradients.
 - [ ] Implement lazy evaluation of gradients.
@@ -21,6 +21,7 @@ Last work : `DeepINN/constraint/gradients.py`
 ## Tutorials
 - [x] Basic geometry tutorials.
 - [x] Constraints tutorials.
+- [ ] Add template PDE in constraint directory.
 
 ## Misc
 - [ ] Migrate to JupyterBooks. 
