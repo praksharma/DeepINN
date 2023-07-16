@@ -1,5 +1,4 @@
 from .base import Dataset
-import torch
 
 class Generic(Dataset):
     """
