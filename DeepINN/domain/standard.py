@@ -1,4 +1,5 @@
 from .base import Dataset
+import torch
 
 class Generic(Dataset):
     """
@@ -46,5 +47,5 @@ class Generic(Dataset):
         self.bc_labels_list = []
         self.bc_points = self.sample_boundary_points() # returns a list of boundary points on each boundary as tensor
         for bc_number in range(0, self.bc_list_len):
-            self.bc_labels_list.append(self.bc_sampler[bc_number].sample_labels(self.bc_points[bc_number]))#.unsqueeze(1))
+            self.bc_labels_list.append(self.bc_sampler[bc_number].sample_labels(self.bc_points[bc_number]).unsqueeze(1))
         return self.bc_points, self.bc_labels_list
