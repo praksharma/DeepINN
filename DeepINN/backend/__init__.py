@@ -4,6 +4,7 @@
 # Here we are only implementing PyTorch
 # I have copied the PyTorch version of backend: https://github.com/lululxvi/deepxde/tree/master/deepxde/backend
 import sys
+from .utils import loss_metric, choose_optimiser
 
 def load_backend():
     try:

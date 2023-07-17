@@ -2,7 +2,7 @@
 from .__about__ import __version__
 
 from . import backend
-from . import config
+from .config import Config
 
 from .geometry import spaces
 from .geometry import domains
@@ -14,4 +14,6 @@ from . import utils
 from . import constraint
 
 from . import domain
+
+from .model import Model
 
