@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from .utils import activation, initialiser
 
 class BaseNetwork():
     """
@@ -6,7 +7,9 @@ class BaseNetwork():
     """
     def __init__(self) -> None:
         super().__init__() # intialise all methods from nn.Module
-        #print("DEBUG: Base network")
+        
+        self.activation = activation
+        self.initialiser = initialiser
 
     @abstractmethod
     def forward(self):
