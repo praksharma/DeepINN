@@ -72,9 +72,10 @@ class Jacobian():
         
         # for 1D tensors
         if len(self.X.size()) == 1:
-            all_jacobian = torch.autograd.grad(self.y[i], self.X)[0]
+            #print("1D")
+            all_jacobian = torch.autograd.grad(self.y, self.X, create_graph=True, retain_graph=True)[0]
             return all_jacobian#[:, [j]]
         # This only allows gradients with 1 output neuron.
-        all_jacobian = torch.autograd.grad(self.y, self.X,grad_outputs=torch.ones_like(self.y), create_graph=True,)[0]
+        all_jacobian = torch.autograd.grad(self.y, self.X, grad_outputs=torch.ones_like(self.y), create_graph=True, retain_graph=True)[0]
         
         return all_jacobian[:, [j]]
