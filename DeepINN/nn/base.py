@@ -8,8 +8,8 @@ class BaseNetwork():
     def __init__(self) -> None:
         super().__init__() # intialise all methods from nn.Module
         
-        self.activation = activation
-        self.initialiser = initialiser
+        self.activation_function = activation
+        self.initialiser_function = initialiser        
 
     @abstractmethod
     def forward(self):
