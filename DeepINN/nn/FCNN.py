@@ -48,13 +48,13 @@ class FullyConnected(BaseNetwork, torch.nn.Module):
         All we need is the inputs tensor and rest of the things are already in the class.
         """
 
-        ub = torch.max(input)
-        lb = torch.min(input)
+        self.ub = torch.max(input)
+        self.lb = torch.min(input)
                       
         # Preprocessing input : feature scaling
-        input = (input - lb)/(ub - lb)
+        input = (input - self.lb)/(self.ub - self.lb)
         
-        self.a = input#.float()
+        self.a = input.float()
 
         for i in range(len(self.layer_size)-2): # last layer is not activated
             
