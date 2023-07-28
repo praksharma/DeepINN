@@ -50,3 +50,15 @@ GitHub pages is known for its laziness. To force deploy the website go to "Setti
 > Your site was last deployed to the github-pages environment by the pages build and deployment workflow.
 
 Click on "pages build and deployment" and click on the button "Re-run all jobs" on the top right corner.
+
+8. Include notebooks outside the docs/ directory
+You can create a soft link in the book directory to the directory with the notebooks you want to include:
+```sh
+ln -s ../Tutorials ./Tutorials   
+```
+
+You can also link to a document as follows:
+
+```sh
+ln -s ../../README.md ./README.md
+```
