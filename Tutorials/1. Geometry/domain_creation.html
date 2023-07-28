@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Domain Basics &#8212; My sample book</title>
+    <title>Domain Basics &#8212; DeepINN</title>
   
   
   
@@ -152,15 +152,22 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../../intro.html">
-                    Welcome to your Jupyter Book
+                    DeepINN
                 </a>
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Installation</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../docs_tutorial/README.html">DeepINN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs_tutorial/installation.html">Installation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../docs_tutorial/contribution.html">Contribution</a></li>
 
-
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Documentation compilation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../docs_tutorial/docs_contribution.html">Documentation compilation</a></li>
 </ul>
 
     </div>
@@ -215,7 +222,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+      <li><a href="https://github.com/praksharma/DeepINN" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -232,7 +239,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FTutorials/1. Geometry/domain_creation.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/praksharma/DeepINN/issues/new?title=Issue%20on%20page%20%2FTutorials/1. Geometry/domain_creation.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -512,10 +519,6 @@ one has to set it over the <strong>set_volume</strong> methode.</p>
                              If you need the exact volume for sampling,
                              use domain.set_volume()
   warnings.warn(&quot;&quot;&quot;Exact volume of this union is not known, will use the
-/home/hell/Desktop/repos/DeepINN/Tutorials/1. Geometry/../../DeepINN/geometry/domains/domainoperations/sampler_helper.py:50: UserWarning: Will sample random points in the created domain operation, with
-                     a for loop over all input parameters, in total: 1
-                     This may slow down the training.
-  warnings.warn(f&quot;&quot;&quot;Will sample random points in the created domain operation, with
 /home/hell/Desktop/repos/DeepINN/Tutorials/1. Geometry/../../DeepINN/geometry/domains/domainoperations/sampler_helper.py:163: UserWarning: Will sample random points in the created domain operation, with
                      a for loop over all input parameters, in total: 1
                      This may slow down the training.
@@ -525,11 +528,15 @@ one has to set it over the <strong>set_volume</strong> methode.</p>
                          If you need the exact volume for sampling,
                          use domain.set_volume()
   warnings.warn(&quot;&quot;&quot;Exact volume of this intersection-boundary is not known,
+/home/hell/Desktop/repos/DeepINN/Tutorials/1. Geometry/../../DeepINN/geometry/domains/domainoperations/sampler_helper.py:50: UserWarning: Will sample random points in the created domain operation, with
+                     a for loop over all input parameters, in total: 1
+                     This may slow down the training.
+  warnings.warn(f&quot;&quot;&quot;Will sample random points in the created domain operation, with
 </pre></div>
 </div>
 <img alt="../../_images/dbaaa2226b964ac550c4483e9dc30306598be90c284a2d2cc3b879deb2a3a2bc.png" src="../../_images/dbaaa2226b964ac550c4483e9dc30306598be90c284a2d2cc3b879deb2a3a2bc.png" />
-<img alt="../../_images/9af021d1bfbc5f1e1aa47b61f008f569c02dee7f7d8e6ee7486e8f334997528f.png" src="../../_images/9af021d1bfbc5f1e1aa47b61f008f569c02dee7f7d8e6ee7486e8f334997528f.png" />
-<img alt="../../_images/9fad33f9b3d6a22a4f7b90ac5547787747910f53eba9e5823b9be3eb519f5aa3.png" src="../../_images/9fad33f9b3d6a22a4f7b90ac5547787747910f53eba9e5823b9be3eb519f5aa3.png" />
+<img alt="../../_images/2c7949718b8a4e0044721b3b8847ea3854d08597d64421d2ae858514694c433c.png" src="../../_images/2c7949718b8a4e0044721b3b8847ea3854d08597d64421d2ae858514694c433c.png" />
+<img alt="../../_images/9cb28c977e984cd062eacafed0cc9a1d90314936dda00eae47cb6508f865190c.png" src="../../_images/9cb28c977e984cd062eacafed0cc9a1d90314936dda00eae47cb6508f865190c.png" />
 </div>
 </div>
 <p>For the product, we create the Cartesian product of an interval and circle to get a cylinder:</p>
@@ -651,7 +658,7 @@ change with the trained solution is not possible, for now.</p>
   <div class="footer-item">
     
 <p class="component-author">
-By The Jupyter Book Community
+By Prakhar Sharma
 </p>
 
   </div>
@@ -660,7 +667,7 @@ By The Jupyter Book Community
     
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>

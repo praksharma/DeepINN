@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Test 1 &#8212; My sample book</title>
+    <title>Test 1 &#8212; DeepINN</title>
   
   
   
@@ -152,15 +152,22 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../../intro.html">
-                    Welcome to your Jupyter Book
+                    DeepINN
                 </a>
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Installation</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../docs_tutorial/README.html">DeepINN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs_tutorial/installation.html">Installation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Contribution</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../docs_tutorial/contribution.html">Contribution</a></li>
 
-
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Documentation compilation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../docs_tutorial/docs_contribution.html">Documentation compilation</a></li>
 </ul>
 
     </div>
@@ -215,7 +222,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+      <li><a href="https://github.com/praksharma/DeepINN" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -232,7 +239,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FTutorials/3. Gradients/1. Gradients.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/praksharma/DeepINN/issues/new?title=Issue%20on%20page%20%2FTutorials/3. Gradients/1. Gradients.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -527,7 +534,7 @@ We need to investigate whether we need this.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([-1.4550], grad_fn=&lt;AddBackward0&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([-1.0745], grad_fn=&lt;AddBackward0&gt;)
 </pre></div>
 </div>
 </div>
@@ -542,7 +549,7 @@ We need to investigate whether we need this.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gradient (dy/dx): tensor([ 0.3399, -0.5747])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gradient (dy/dx): tensor([-0.6131, -0.1145])
 </pre></div>
 </div>
 </div>
@@ -555,7 +562,7 @@ We need to investigate whether we need this.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([ 0.3399, -0.5747], grad_fn=&lt;SqueezeBackward1&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([-0.6131, -0.1145], grad_fn=&lt;SqueezeBackward1&gt;)
 </pre></div>
 </div>
 </div>
@@ -579,8 +586,8 @@ We need to investigate whether we need this.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(tensor([-1.4550], grad_fn=&lt;AddBackward0&gt;),
- tensor([-1.4550], grad_fn=&lt;AddBackward0&gt;))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(tensor([-1.0745], grad_fn=&lt;AddBackward0&gt;),
+ tensor([-1.0745], grad_fn=&lt;AddBackward0&gt;))
 </pre></div>
 </div>
 </div>
@@ -690,7 +697,7 @@ We need to investigate whether we need this.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/cb4c7384fe4295be50a496a94f0f68686d49ca17540d294675f7967f172c5f8e.png" src="../../_images/cb4c7384fe4295be50a496a94f0f68686d49ca17540d294675f7967f172c5f8e.png" />
+<img alt="../../_images/94da10dc24f3e609f6758930061725dbcdd1d51ff85eea23d37e80a0626a1051.png" src="../../_images/94da10dc24f3e609f6758930061725dbcdd1d51ff85eea23d37e80a0626a1051.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -745,10 +752,10 @@ We need to investigate whether we need this.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7fb8f0160e50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f506dca4eb0&gt;
 </pre></div>
 </div>
-<img alt="../../_images/0f483493187509c01d0fa14f8dd59dc0c4f0dddb2c58fcd620cb10db2e9743c9.png" src="../../_images/0f483493187509c01d0fa14f8dd59dc0c4f0dddb2c58fcd620cb10db2e9743c9.png" />
+<img alt="../../_images/6e966923cecab46e22a159f251701071cdcf3eeb3ef459c329ea373dccc2d530.png" src="../../_images/6e966923cecab46e22a159f251701071cdcf3eeb3ef459c329ea373dccc2d530.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -777,106 +784,106 @@ We need to investigate whether we need this.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gradient (dy/dx): tensor([[1.3979, 0.0000],
-        [0.8041, 0.0000],
-        [1.8819, 0.0000],
-        [0.6261, 0.0000],
-        [1.2764, 0.0000],
-        [1.8832, 0.0000],
-        [0.2205, 0.0000],
-        [1.6435, 0.0000],
-        [1.1431, 0.0000],
-        [0.9929, 0.0000],
-        [0.8649, 0.0000],
-        [0.9180, 0.0000],
-        [1.2458, 0.0000],
-        [0.3022, 0.0000],
-        [0.0337, 0.0000],
-        [1.3012, 0.0000],
-        [0.7878, 0.0000],
-        [1.0020, 0.0000],
-        [0.6209, 0.0000],
-        [1.9338, 0.0000],
-        [0.9785, 0.0000],
-        [0.4598, 0.0000],
-        [1.4531, 0.0000],
-        [0.2283, 0.0000],
-        [0.6906, 0.0000],
-        [0.8649, 0.0000],
-        [0.2798, 0.0000],
-        [1.7243, 0.0000],
-        [1.2354, 0.0000],
-        [0.3071, 0.0000],
-        [0.6139, 0.0000],
-        [1.6674, 0.0000],
-        [0.1261, 0.0000],
-        [1.7987, 0.0000],
-        [0.1884, 0.0000],
-        [0.1966, 0.0000],
-        [1.6999, 0.0000],
-        [0.4330, 0.0000],
-        [1.3250, 0.0000],
-        [0.3093, 0.0000],
-        [1.1432, 0.0000],
-        [1.1247, 0.0000],
-        [0.3606, 0.0000],
-        [0.0999, 0.0000],
-        [0.8533, 0.0000],
-        [0.7768, 0.0000],
-        [0.8121, 0.0000],
-        [0.8821, 0.0000],
-        [1.5231, 0.0000],
-        [1.5317, 0.0000],
-        [1.6857, 0.0000],
-        [1.6011, 0.0000],
-        [1.3655, 0.0000],
-        [0.0492, 0.0000],
-        [1.1235, 0.0000],
-        [1.3497, 0.0000],
-        [0.7875, 0.0000],
-        [1.1304, 0.0000],
-        [1.9308, 0.0000],
-        [1.6421, 0.0000],
-        [0.7562, 0.0000],
-        [1.7851, 0.0000],
-        [0.6532, 0.0000],
-        [1.4944, 0.0000],
-        [0.3498, 0.0000],
-        [0.4300, 0.0000],
-        [0.0453, 0.0000],
-        [1.9975, 0.0000],
-        [1.8202, 0.0000],
-        [1.5213, 0.0000],
-        [1.3407, 0.0000],
-        [0.5032, 0.0000],
-        [1.6090, 0.0000],
-        [1.3148, 0.0000],
-        [0.3289, 0.0000],
-        [1.6935, 0.0000],
-        [0.7729, 0.0000],
-        [1.3299, 0.0000],
-        [1.3417, 0.0000],
-        [1.4884, 0.0000],
-        [1.1132, 0.0000],
-        [1.4953, 0.0000],
-        [1.4971, 0.0000],
-        [1.3260, 0.0000],
-        [1.7866, 0.0000],
-        [1.2527, 0.0000],
-        [1.7512, 0.0000],
-        [0.1864, 0.0000],
-        [0.5558, 0.0000],
-        [0.5347, 0.0000],
-        [1.1001, 0.0000],
-        [1.5144, 0.0000],
-        [0.3421, 0.0000],
-        [0.2855, 0.0000],
-        [1.0278, 0.0000],
-        [0.3382, 0.0000],
-        [1.5716, 0.0000],
-        [0.6505, 0.0000],
-        [1.4516, 0.0000],
-        [0.2380, 0.0000]])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gradient (dy/dx): tensor([[0.2404, 0.0000],
+        [1.7054, 0.0000],
+        [1.8168, 0.0000],
+        [1.1881, 0.0000],
+        [1.5902, 0.0000],
+        [1.6190, 0.0000],
+        [0.4133, 0.0000],
+        [0.9846, 0.0000],
+        [0.0180, 0.0000],
+        [0.7357, 0.0000],
+        [1.5008, 0.0000],
+        [1.3901, 0.0000],
+        [1.5391, 0.0000],
+        [0.1400, 0.0000],
+        [1.1538, 0.0000],
+        [1.2276, 0.0000],
+        [0.2016, 0.0000],
+        [0.4515, 0.0000],
+        [1.1887, 0.0000],
+        [0.3035, 0.0000],
+        [1.6643, 0.0000],
+        [1.4939, 0.0000],
+        [1.4746, 0.0000],
+        [0.5871, 0.0000],
+        [0.1691, 0.0000],
+        [0.1530, 0.0000],
+        [0.6571, 0.0000],
+        [1.6609, 0.0000],
+        [1.8693, 0.0000],
+        [0.3678, 0.0000],
+        [1.5867, 0.0000],
+        [1.2049, 0.0000],
+        [1.9655, 0.0000],
+        [0.2901, 0.0000],
+        [0.6644, 0.0000],
+        [1.3656, 0.0000],
+        [0.5392, 0.0000],
+        [0.8798, 0.0000],
+        [0.2047, 0.0000],
+        [1.7842, 0.0000],
+        [1.7105, 0.0000],
+        [1.6866, 0.0000],
+        [1.7014, 0.0000],
+        [0.6377, 0.0000],
+        [0.9163, 0.0000],
+        [0.0888, 0.0000],
+        [1.6177, 0.0000],
+        [1.1319, 0.0000],
+        [1.5418, 0.0000],
+        [1.1122, 0.0000],
+        [0.1310, 0.0000],
+        [0.0153, 0.0000],
+        [1.0900, 0.0000],
+        [1.2789, 0.0000],
+        [1.5600, 0.0000],
+        [1.2193, 0.0000],
+        [1.1732, 0.0000],
+        [1.0808, 0.0000],
+        [1.2450, 0.0000],
+        [1.2141, 0.0000],
+        [0.2201, 0.0000],
+        [0.6420, 0.0000],
+        [0.6332, 0.0000],
+        [0.2786, 0.0000],
+        [0.8319, 0.0000],
+        [0.6455, 0.0000],
+        [1.3610, 0.0000],
+        [1.7023, 0.0000],
+        [1.8610, 0.0000],
+        [1.1464, 0.0000],
+        [0.2630, 0.0000],
+        [0.8480, 0.0000],
+        [0.9868, 0.0000],
+        [1.7689, 0.0000],
+        [0.1667, 0.0000],
+        [0.9396, 0.0000],
+        [0.8910, 0.0000],
+        [0.8184, 0.0000],
+        [1.8139, 0.0000],
+        [1.1209, 0.0000],
+        [0.4381, 0.0000],
+        [1.1321, 0.0000],
+        [0.9122, 0.0000],
+        [1.2026, 0.0000],
+        [1.0913, 0.0000],
+        [1.8816, 0.0000],
+        [0.4601, 0.0000],
+        [1.3871, 0.0000],
+        [0.3053, 0.0000],
+        [1.1317, 0.0000],
+        [0.9120, 0.0000],
+        [1.9719, 0.0000],
+        [0.0779, 0.0000],
+        [1.4513, 0.0000],
+        [0.0869, 0.0000],
+        [0.2085, 0.0000],
+        [0.1397, 0.0000],
+        [1.3176, 0.0000],
+        [0.9638, 0.0000],
+        [0.1933, 0.0000]])
 </pre></div>
 </div>
 </div>
@@ -897,106 +904,106 @@ We need to investigate whether we need this.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[1.3979],
-        [0.8041],
-        [1.8819],
-        [0.6261],
-        [1.2764],
-        [1.8832],
-        [0.2205],
-        [1.6435],
-        [1.1431],
-        [0.9929],
-        [0.8649],
-        [0.9180],
-        [1.2458],
-        [0.3022],
-        [0.0337],
-        [1.3012],
-        [0.7878],
-        [1.0020],
-        [0.6209],
-        [1.9338],
-        [0.9785],
-        [0.4598],
-        [1.4531],
-        [0.2283],
-        [0.6906],
-        [0.8649],
-        [0.2798],
-        [1.7243],
-        [1.2354],
-        [0.3071],
-        [0.6139],
-        [1.6674],
-        [0.1261],
-        [1.7987],
-        [0.1884],
-        [0.1966],
-        [1.6999],
-        [0.4330],
-        [1.3250],
-        [0.3093],
-        [1.1432],
-        [1.1247],
-        [0.3606],
-        [0.0999],
-        [0.8533],
-        [0.7768],
-        [0.8121],
-        [0.8821],
-        [1.5231],
-        [1.5317],
-        [1.6857],
-        [1.6011],
-        [1.3655],
-        [0.0492],
-        [1.1235],
-        [1.3497],
-        [0.7875],
-        [1.1304],
-        [1.9308],
-        [1.6421],
-        [0.7562],
-        [1.7851],
-        [0.6532],
-        [1.4944],
-        [0.3498],
-        [0.4300],
-        [0.0453],
-        [1.9975],
-        [1.8202],
-        [1.5213],
-        [1.3407],
-        [0.5032],
-        [1.6090],
-        [1.3148],
-        [0.3289],
-        [1.6935],
-        [0.7729],
-        [1.3299],
-        [1.3417],
-        [1.4884],
-        [1.1132],
-        [1.4953],
-        [1.4971],
-        [1.3260],
-        [1.7866],
-        [1.2527],
-        [1.7512],
-        [0.1864],
-        [0.5558],
-        [0.5347],
-        [1.1001],
-        [1.5144],
-        [0.3421],
-        [0.2855],
-        [1.0278],
-        [0.3382],
-        [1.5716],
-        [0.6505],
-        [1.4516],
-        [0.2380]], grad_fn=&lt;IndexBackward0&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[0.2404],
+        [1.7054],
+        [1.8168],
+        [1.1881],
+        [1.5902],
+        [1.6190],
+        [0.4133],
+        [0.9846],
+        [0.0180],
+        [0.7357],
+        [1.5008],
+        [1.3901],
+        [1.5391],
+        [0.1400],
+        [1.1538],
+        [1.2276],
+        [0.2016],
+        [0.4515],
+        [1.1887],
+        [0.3035],
+        [1.6643],
+        [1.4939],
+        [1.4746],
+        [0.5871],
+        [0.1691],
+        [0.1530],
+        [0.6571],
+        [1.6609],
+        [1.8693],
+        [0.3678],
+        [1.5867],
+        [1.2049],
+        [1.9655],
+        [0.2901],
+        [0.6644],
+        [1.3656],
+        [0.5392],
+        [0.8798],
+        [0.2047],
+        [1.7842],
+        [1.7105],
+        [1.6866],
+        [1.7014],
+        [0.6377],
+        [0.9163],
+        [0.0888],
+        [1.6177],
+        [1.1319],
+        [1.5418],
+        [1.1122],
+        [0.1310],
+        [0.0153],
+        [1.0900],
+        [1.2789],
+        [1.5600],
+        [1.2193],
+        [1.1732],
+        [1.0808],
+        [1.2450],
+        [1.2141],
+        [0.2201],
+        [0.6420],
+        [0.6332],
+        [0.2786],
+        [0.8319],
+        [0.6455],
+        [1.3610],
+        [1.7023],
+        [1.8610],
+        [1.1464],
+        [0.2630],
+        [0.8480],
+        [0.9868],
+        [1.7689],
+        [0.1667],
+        [0.9396],
+        [0.8910],
+        [0.8184],
+        [1.8139],
+        [1.1209],
+        [0.4381],
+        [1.1321],
+        [0.9122],
+        [1.2026],
+        [1.0913],
+        [1.8816],
+        [0.4601],
+        [1.3871],
+        [0.3053],
+        [1.1317],
+        [0.9120],
+        [1.9719],
+        [0.0779],
+        [1.4513],
+        [0.0869],
+        [0.2085],
+        [0.1397],
+        [1.3176],
+        [0.9638],
+        [0.1933]], grad_fn=&lt;IndexBackward0&gt;)
 </pre></div>
 </div>
 </div>
@@ -1414,7 +1421,7 @@ We need to investigate whether we need this.</p>
   <div class="footer-item">
     
 <p class="component-author">
-By The Jupyter Book Community
+By Prakhar Sharma
 </p>
 
   </div>
@@ -1423,7 +1430,7 @@ By The Jupyter Book Community
     
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
