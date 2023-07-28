@@ -4,12 +4,14 @@
 format: jb-book
 root: intro
 parts:
-  - caption: Installation
+  - caption: Installation and contribution
     chapters:
     - file: docs_tutorial/installation.md
-  - caption: Contribution
-    chapters:
     - file: docs_tutorial/contribution.md
-  - caption: Documentation compilation
-    chapters:
     - file: docs_tutorial/docs_contribution.md
+  # - caption: Contribution
+  #   chapters:
+  #   - file: docs_tutorial/contribution.md
+  # - caption: Documentation compilation
+  #   chapters:
+  #   - file: docs_tutorial/docs_contribution.md
