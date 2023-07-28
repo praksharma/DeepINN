@@ -2,6 +2,7 @@
 **/__pycache__/
 # Sphinx documentation
 docs/_build/
+docs_legacy/_build/
 
 # Jupyter notebook
 **.ipynb_checkpoints
