@@ -1,0 +1,17 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+parts:
+  - caption: Installation and contribution
+    chapters:
+    - file: docs_tutorial/installation.md
+    - file: docs_tutorial/contribution.md
+    - file: docs_tutorial/docs_contribution.md
+  # - caption: Contribution
+  #   chapters:
+  #   - file: docs_tutorial/contribution.md
+  # - caption: Documentation compilation
+  #   chapters:
+  #   - file: docs_tutorial/docs_contribution.md
