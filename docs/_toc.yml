@@ -6,4 +6,10 @@ root: intro
 parts:
   - caption: Installation
     chapters:
-    - file: docs_tutorial/README.md
+    - file: docs_tutorial/installation.md
+  - caption: Contribution
+    chapters:
+    - file: docs_tutorial/contribution.md
+  - caption: Documentation compilation
+    chapters:
+    - file: docs_tutorial/docs_contribution.md
