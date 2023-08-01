@@ -28,5 +28,5 @@ Last work : `DeepINN/constraint/gradients.py`
 - [ ] Add template PDE in constraint directory.
 
 ## Misc
-- [ ] Migrate to JupyterBooks. 
-- [ ] Move everything after contribution in the [readme.md](readme.md) to the docs.
+- [x] Migrate to JupyterBooks. 
+- [x] Move everything after contribution in the [readme.md](readme.md) to the docs.

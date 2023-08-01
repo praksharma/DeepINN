@@ -1,8 +1,8 @@
 
-## Documentation compilation
+# Documentation compilation
 The doc is created using [Jupyter-book](https://jupyterbook.org/en/stable/intro.html).
 
-### Setting up Jupyter-books
+## Setting up Jupyter-books
 These steps will allows you to create a basic setup. For more details visit [here](https://jupyterbook.org/en/stable/start/your-first-book.html). 
 1. Create a new Python virtual environment or use an existing one.
 
