@@ -64,6 +64,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'Tutorials/5. FCNN/3. model';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="2.%20test.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -160,6 +161,38 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../docs_tutorial/contribution.html">Contribution</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="../../docs_tutorial/docs_contribution.html">Documentation compilation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Geometry Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../1.%20Geometry/Basic_domains.html">Basic domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.%20Geometry/different%20sampling.html">Basic sampling techniques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.%20Geometry/domain_creation.html">Domain Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.%20Geometry/polygons_external_objects.html">Polygons and External Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.%20Geometry/UKAEA%20SUT.html">UKAEA SUT</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Constraint Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../2.%20BC/1.%20dirichlet.html">Dirichlet BC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.%20BC/2.%20pde.html">PDE constraint</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Gradient Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../3.%20Gradients/1.%20Gradients.html">Gradient basics</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../3.%20Gradients/2.%20higher%20derivative.html">Gradients in DeepINN</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Domain Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../4.%20Dataset/1.%20basic.html">Training dataset</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fully connected neural network</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1.%20basic.html">Basics of network design</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">FCNN training</a></li>
 </ul>
 
     </div>
@@ -517,19 +550,19 @@ Domain compiled
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 1 	 BC Loss: 0.0001	 PDE Loss: 10.7730 	 Loss: 10.7731
-Iteration: 11 	 BC Loss: 0.0009	 PDE Loss: 9.8835 	 Loss: 9.8844
-Iteration: 21 	 BC Loss: 0.0025	 PDE Loss: 9.0495 	 Loss: 9.0519
-Iteration: 31 	 BC Loss: 0.0048	 PDE Loss: 8.2675 	 Loss: 8.2723
-Iteration: 41 	 BC Loss: 0.0079	 PDE Loss: 7.5351 	 Loss: 7.5430
-Iteration: 51 	 BC Loss: 0.0117	 PDE Loss: 6.8486 	 Loss: 6.8603
-Iteration: 61 	 BC Loss: 0.0161	 PDE Loss: 6.2039 	 Loss: 6.2201
-Iteration: 71 	 BC Loss: 0.0212	 PDE Loss: 5.5981 	 Loss: 5.6193
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 1 	 BC Loss: 1.3662	 PDE Loss: 4.7835 	 Loss: 6.1498
+Iteration: 11 	 BC Loss: 1.2905	 PDE Loss: 4.1248 	 Loss: 5.4153
+Iteration: 21 	 BC Loss: 1.2174	 PDE Loss: 3.5268 	 Loss: 4.7441
+Iteration: 31 	 BC Loss: 1.1477	 PDE Loss: 2.9921 	 Loss: 4.1398
+Iteration: 41 	 BC Loss: 1.0818	 PDE Loss: 2.5201 	 Loss: 3.6019
+Iteration: 51 	 BC Loss: 1.0200	 PDE Loss: 2.1073 	 Loss: 3.1273
+Iteration: 61 	 BC Loss: 0.9621	 PDE Loss: 1.7493 	 Loss: 2.7114
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 81 	 BC Loss: 0.0269	 PDE Loss: 5.0295 	 Loss: 5.0564
-Iteration: 91 	 BC Loss: 0.0332	 PDE Loss: 4.4972 	 Loss: 4.5304
-Iteration: 101 	 BC Loss: 0.0401	 PDE Loss: 4.0009 	 Loss: 4.0410
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 71 	 BC Loss: 0.9078	 PDE Loss: 1.4411 	 Loss: 2.3489
+Iteration: 81 	 BC Loss: 0.8570	 PDE Loss: 1.1775 	 Loss: 2.0346
+Iteration: 91 	 BC Loss: 0.8093	 PDE Loss: 0.9540 	 Loss: 1.7633
+Iteration: 101 	 BC Loss: 0.7645	 PDE Loss: 0.7660 	 Loss: 1.5305
 Training finished
 </pre></div>
 </div>
@@ -577,6 +610,15 @@ Training finished
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="2.%20test.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
+      </div>
+    </a>
 </div></div>
   
 </div>

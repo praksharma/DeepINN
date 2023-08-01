@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>&lt;no title&gt; &#8212; DeepINN</title>
+    <title>PDE constraint &#8212; DeepINN</title>
   
   
   
@@ -64,6 +64,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'Tutorials/2. BC/2. pde';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Gradient basics" href="../3.%20Gradients/1.%20Gradients.html" />
+    <link rel="prev" title="Dirichlet BC" href="1.%20dirichlet.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -160,6 +162,38 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../docs_tutorial/contribution.html">Contribution</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="../../docs_tutorial/docs_contribution.html">Documentation compilation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Geometry Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../1.%20Geometry/Basic_domains.html">Basic domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.%20Geometry/different%20sampling.html">Basic sampling techniques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.%20Geometry/domain_creation.html">Domain Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.%20Geometry/polygons_external_objects.html">Polygons and External Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.%20Geometry/UKAEA%20SUT.html">UKAEA SUT</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Constraint Tutorials</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1.%20dirichlet.html">Dirichlet BC</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">PDE constraint</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Gradient Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../3.%20Gradients/1.%20Gradients.html">Gradient basics</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../3.%20Gradients/2.%20higher%20derivative.html">Gradients in DeepINN</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Domain Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../4.%20Dataset/1.%20basic.html">Training dataset</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fully connected neural network</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../5.%20FCNN/1.%20basic.html">Basics of network design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.%20FCNN/3.%20model.html">FCNN training</a></li>
 </ul>
 
     </div>
@@ -330,9 +364,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -343,19 +375,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>PDE constraint</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -365,7 +389,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="cell docutils container">
+  <section class="tex2jax_ignore mathjax_ignore" id="pde-constraint">
+<h1>PDE constraint<a class="headerlink" href="#pde-constraint" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is only valid when the package is not installed</span>
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -406,7 +432,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/190a4569749a0b23f29c110d86e6d59359f1f3f6b049b583c5b8c5edf692d9ac.png" src="../../_images/190a4569749a0b23f29c110d86e6d59359f1f3f6b049b583c5b8c5edf692d9ac.png" />
+<img alt="../../_images/2c30d23af2370c5d637de934b6344b7e3284e1ccb849b1ba062b315552e5f80b.png" src="../../_images/2c30d23af2370c5d637de934b6344b7e3284e1ccb849b1ba062b315552e5f80b.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -461,12 +487,13 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f710a24f640&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f8b5c8e67c0&gt;
 </pre></div>
 </div>
-<img alt="../../_images/83a50f8b6c66462cc160744ac72eb420ca792445cd71fbb9abf68abd83ff7808.png" src="../../_images/83a50f8b6c66462cc160744ac72eb420ca792445cd71fbb9abf68abd83ff7808.png" />
+<img alt="../../_images/46f763df2f0db5a0c404bccbc2e2e8be3f080654e56a3bcc8913a51ad967a083.png" src="../../_images/46f763df2f0db5a0c404bccbc2e2e8be3f080654e56a3bcc8913a51ad967a083.png" />
 </div>
 </div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -499,6 +526,24 @@ document.write(`
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="1.%20dirichlet.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Dirichlet BC</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../3.%20Gradients/1.%20Gradients.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Gradient basics</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
@@ -508,20 +553,6 @@ document.write(`
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-  </nav></div>
-
-</div></div>
               
             
           </div>

@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>&lt;no title&gt; &#8212; DeepINN</title>
+    <title>Dirichlet BC &#8212; DeepINN</title>
   
   
   
@@ -64,6 +64,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'Tutorials/2. BC/1. dirichlet';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="PDE constraint" href="2.%20pde.html" />
+    <link rel="prev" title="UKAEA SUT" href="../1.%20Geometry/UKAEA%20SUT.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -160,6 +162,38 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../docs_tutorial/contribution.html">Contribution</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="../../docs_tutorial/docs_contribution.html">Documentation compilation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Geometry Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../1.%20Geometry/Basic_domains.html">Basic domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.%20Geometry/different%20sampling.html">Basic sampling techniques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.%20Geometry/domain_creation.html">Domain Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.%20Geometry/polygons_external_objects.html">Polygons and External Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.%20Geometry/UKAEA%20SUT.html">UKAEA SUT</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Constraint Tutorials</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Dirichlet BC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2.%20pde.html">PDE constraint</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Gradient Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../3.%20Gradients/1.%20Gradients.html">Gradient basics</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../3.%20Gradients/2.%20higher%20derivative.html">Gradients in DeepINN</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Domain Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../4.%20Dataset/1.%20basic.html">Training dataset</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fully connected neural network</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../5.%20FCNN/1.%20basic.html">Basics of network design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.%20FCNN/3.%20model.html">FCNN training</a></li>
 </ul>
 
     </div>
@@ -330,9 +364,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -343,19 +375,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>Dirichlet BC</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -365,7 +389,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="cell docutils container">
+  <section class="tex2jax_ignore mathjax_ignore" id="dirichlet-bc">
+<h1>Dirichlet BC<a class="headerlink" href="#dirichlet-bc" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is only valid when the package is not installed</span>
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -408,7 +434,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ecc30b9c2d8dfb33a22fbb67bb6ad42aee92e36924dc3c973534157ce18d08c9.png" src="../../_images/ecc30b9c2d8dfb33a22fbb67bb6ad42aee92e36924dc3c973534157ce18d08c9.png" />
+<img alt="../../_images/c1dbfc4cf9d0812b836ecfa0ae696bb0b1e846be88e35e7ddc4e946bbbad6d1f.png" src="../../_images/c1dbfc4cf9d0812b836ecfa0ae696bb0b1e846be88e35e7ddc4e946bbbad6d1f.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -436,8 +462,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/914f0eed11985f19f5317b62122a7351c9a363d933c6fbb6fc16ad8ed5d83799.png" src="../../_images/914f0eed11985f19f5317b62122a7351c9a363d933c6fbb6fc16ad8ed5d83799.png" />
-<img alt="../../_images/ef20dbd6fc478320ec3bc8e00b41f28714db3adead1c93849e5f3017884e817c.png" src="../../_images/ef20dbd6fc478320ec3bc8e00b41f28714db3adead1c93849e5f3017884e817c.png" />
+<img alt="../../_images/446c5cde8adf2253b11153d39cc0d4c663324a839bb9153d066452289c27f909.png" src="../../_images/446c5cde8adf2253b11153d39cc0d4c663324a839bb9153d066452289c27f909.png" />
+<img alt="../../_images/61eb97518713225dff41a2e400d3b5fd8aea1765fa7bf425c06913915bb66fc2.png" src="../../_images/61eb97518713225dff41a2e400d3b5fd8aea1765fa7bf425c06913915bb66fc2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -511,10 +537,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7fe40fc76490&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f8b82df94f0&gt;
 </pre></div>
 </div>
-<img alt="../../_images/ca4b0a61de9c4fac9a456c70644864e127a3a34f54eeddc30ef3bf3cf3702ea3.png" src="../../_images/ca4b0a61de9c4fac9a456c70644864e127a3a34f54eeddc30ef3bf3cf3702ea3.png" />
+<img alt="../../_images/e45348afa5edaa17959fe3886f5460e6801d758aa80036f5778fcfb96660c649.png" src="../../_images/e45348afa5edaa17959fe3886f5460e6801d758aa80036f5778fcfb96660c649.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -526,31 +552,13 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7fe40fb51640&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f8b82cdb580&gt;
 </pre></div>
 </div>
-<img alt="../../_images/bcdbe4ddee855669c40010583d742a1618e9daf442fd77694f21707475c292d4.png" src="../../_images/bcdbe4ddee855669c40010583d742a1618e9daf442fd77694f21707475c292d4.png" />
+<img alt="../../_images/711be36c1a9389f5f20d6c6103eda6b6da50e2003a5363afedd4d7989c510b2e.png" src="../../_images/711be36c1a9389f5f20d6c6103eda6b6da50e2003a5363afedd4d7989c510b2e.png" />
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base</span> <span class="o">=</span> <span class="n">dp</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">FullyConnected</span><span class="p">()</span>
-<span class="c1">#base.forward()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">base</span> <span class="o">=</span> <span class="n">dp</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">FullyConnected</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1">#base.forward()</span>
-
-<span class="ne">TypeError</span>: __init__() missing 3 required positional arguments: &#39;layer_size&#39;, &#39;activation&#39;, and &#39;initialiser&#39;
-</pre></div>
-</div>
-</div>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -583,6 +591,24 @@ document.write(`
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../1.%20Geometry/UKAEA%20SUT.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">UKAEA SUT</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="2.%20pde.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">PDE constraint</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
@@ -592,20 +618,6 @@ document.write(`
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-  </nav></div>
-
-</div></div>
               
             
           </div>

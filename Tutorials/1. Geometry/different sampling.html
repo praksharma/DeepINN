@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>&lt;no title&gt; &#8212; DeepINN</title>
+    <title>Basic sampling techniques &#8212; DeepINN</title>
   
   
   
@@ -64,6 +64,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'Tutorials/1. Geometry/different sampling';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Domain Basics" href="domain_creation.html" />
+    <link rel="prev" title="Basic domain" href="Basic_domains.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -160,6 +162,38 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../docs_tutorial/contribution.html">Contribution</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="../../docs_tutorial/docs_contribution.html">Documentation compilation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Geometry Tutorials</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Basic_domains.html">Basic domain</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Basic sampling techniques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="domain_creation.html">Domain Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="polygons_external_objects.html">Polygons and External Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UKAEA%20SUT.html">UKAEA SUT</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Constraint Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../2.%20BC/1.%20dirichlet.html">Dirichlet BC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.%20BC/2.%20pde.html">PDE constraint</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Gradient Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../3.%20Gradients/1.%20Gradients.html">Gradient basics</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../3.%20Gradients/2.%20higher%20derivative.html">Gradients in DeepINN</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Domain Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../4.%20Dataset/1.%20basic.html">Training dataset</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fully connected neural network</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../5.%20FCNN/1.%20basic.html">Basics of network design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.%20FCNN/3.%20model.html">FCNN training</a></li>
 </ul>
 
     </div>
@@ -330,9 +364,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -343,19 +375,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>Basic sampling techniques</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -365,7 +389,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="cell docutils container">
+  <section class="tex2jax_ignore mathjax_ignore" id="basic-sampling-techniques">
+<h1>Basic sampling techniques<a class="headerlink" href="#basic-sampling-techniques" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is only valid when the package is not installed</span>
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -404,7 +430,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/58ca187becfecb6160ea215e3d2375e3b0e52eef4eb8426acdda2a40950aba2d.png" src="../../_images/58ca187becfecb6160ea215e3d2375e3b0e52eef4eb8426acdda2a40950aba2d.png" />
+<img alt="../../_images/54d2cf5f883bd450f39b70e305b26fa9e834af292a5b1cbb2faa5c099d687a65.png" src="../../_images/54d2cf5f883bd450f39b70e305b26fa9e834af292a5b1cbb2faa5c099d687a65.png" />
 <img alt="../../_images/88f56863aa41f62a5b9c962f6f131c707481b5ffc17add2adf6104139fca3b05.png" src="../../_images/88f56863aa41f62a5b9c962f6f131c707481b5ffc17add2adf6104139fca3b05.png" />
 </div>
 </div>
@@ -443,9 +469,9 @@ document.write(`
   warnings.warn(&quot;&quot;&quot;Exact volume of this domain boundary is not known,
 </pre></div>
 </div>
-<img alt="../../_images/26f337657f0749a3716b3fac984d871c3e6111fc45ac4a51981a49a31efb3e26.png" src="../../_images/26f337657f0749a3716b3fac984d871c3e6111fc45ac4a51981a49a31efb3e26.png" />
+<img alt="../../_images/1829693562069ae5ccb68a1df817fd9acab5363889f5ac6ce16a344aa46efe28.png" src="../../_images/1829693562069ae5ccb68a1df817fd9acab5363889f5ac6ce16a344aa46efe28.png" />
 <img alt="../../_images/7d16d0d68a6e2970fc5a311758c458bb27d777b532ab312fc309e91d17e1350d.png" src="../../_images/7d16d0d68a6e2970fc5a311758c458bb27d777b532ab312fc309e91d17e1350d.png" />
-<img alt="../../_images/0770a1288a05196a1f57e8381f8e4f87fed9c5ef3755a5f34f0d0add43dfd285.png" src="../../_images/0770a1288a05196a1f57e8381f8e4f87fed9c5ef3755a5f34f0d0add43dfd285.png" />
+<img alt="../../_images/33ee9729f1d5a76756b5f83ea6c81cba75c4dc0164dc42fadcd2f41c94b501b8.png" src="../../_images/33ee9729f1d5a76756b5f83ea6c81cba75c4dc0164dc42fadcd2f41c94b501b8.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -466,7 +492,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/619cea1b96ece9733016571fac4001a1fdd43613174c48f8282ac03dd3188f02.png" src="../../_images/619cea1b96ece9733016571fac4001a1fdd43613174c48f8282ac03dd3188f02.png" />
+<img alt="../../_images/c1a49af8f75af4944de962699713f77d71dcd35da81631aa63087f9f5706fa0a.png" src="../../_images/c1a49af8f75af4944de962699713f77d71dcd35da81631aa63087f9f5706fa0a.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -494,7 +520,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/268c3761f51dcf59f71910bdc04d29210aecf38a351f41aed4cfa9a84232d329.png" src="../../_images/268c3761f51dcf59f71910bdc04d29210aecf38a351f41aed4cfa9a84232d329.png" />
+<img alt="../../_images/6b39b34cf8af1a8192bb1bc7a907e8fbe15f3389fd71c439730feec15894b026.png" src="../../_images/6b39b34cf8af1a8192bb1bc7a907e8fbe15f3389fd71c439730feec15894b026.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -515,9 +541,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/595efd2b10101b40c581d2f70600fdfd49bc7c2d922dea036c4c49f9562686db.png" src="../../_images/595efd2b10101b40c581d2f70600fdfd49bc7c2d922dea036c4c49f9562686db.png" />
+<img alt="../../_images/8fa4ef73e7f57f61db342b90a6cb12795008507a01f7dad064f70569e2c47d13.png" src="../../_images/8fa4ef73e7f57f61db342b90a6cb12795008507a01f7dad064f70569e2c47d13.png" />
 </div>
 </div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -550,6 +577,24 @@ document.write(`
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="Basic_domains.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Basic domain</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="domain_creation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Domain Basics</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
@@ -559,20 +604,6 @@ document.write(`
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-  </nav></div>
-
-</div></div>
               
             
           </div>

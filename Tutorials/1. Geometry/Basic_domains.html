@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>&lt;no title&gt; &#8212; DeepINN</title>
+    <title>Basic domain &#8212; DeepINN</title>
   
   
   
@@ -64,6 +64,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'Tutorials/1. Geometry/Basic_domains';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Basic sampling techniques" href="different%20sampling.html" />
+    <link rel="prev" title="Documentation compilation" href="../../docs_tutorial/docs_contribution.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -160,6 +162,38 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../docs_tutorial/contribution.html">Contribution</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="../../docs_tutorial/docs_contribution.html">Documentation compilation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Geometry Tutorials</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Basic domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="different%20sampling.html">Basic sampling techniques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="domain_creation.html">Domain Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="polygons_external_objects.html">Polygons and External Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UKAEA%20SUT.html">UKAEA SUT</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Constraint Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../2.%20BC/1.%20dirichlet.html">Dirichlet BC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.%20BC/2.%20pde.html">PDE constraint</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Gradient Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../3.%20Gradients/1.%20Gradients.html">Gradient basics</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../3.%20Gradients/2.%20higher%20derivative.html">Gradients in DeepINN</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Domain Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../4.%20Dataset/1.%20basic.html">Training dataset</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fully connected neural network</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../5.%20FCNN/1.%20basic.html">Basics of network design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.%20FCNN/3.%20model.html">FCNN training</a></li>
 </ul>
 
     </div>
@@ -330,9 +364,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -343,19 +375,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>Basic domain</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -365,133 +389,13 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="cell docutils container">
+  <section class="tex2jax_ignore mathjax_ignore" id="basic-domain">
+<h1>Basic domain<a class="headerlink" href="#basic-domain" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is only valid when the package is not installed</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../../&#39;</span><span class="p">)</span> <span class="c1"># two folders up</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>env
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>USER=hell
-LC_TIME=en_GB.UTF-8
-LANGUAGE=en_GB:en
-XDG_SESSION_TYPE=x11
-SSH_AGENT_PID=627320
-SHLVL=1
-HOME=/home/hell
-DESKTOP_SESSION=ubuntu
-GNOME_SHELL_SESSION_MODE=ubuntu
-GTK_MODULES=gail:atk-bridge
-LC_MONETARY=en_GB.UTF-8
-MANAGERPID=627129
-DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus,guid=ebe53e0eab42e6eff161206864c35bd0
-DBUS_STARTER_BUS_TYPE=session
-IM_CONFIG_PHASE=1
-LOGNAME=hell
-_=/usr/bin/env
-JOURNAL_STREAM=8:9568754
-XDG_SESSION_CLASS=user
-USERNAME=hell
-GNOME_DESKTOP_SESSION_ID=this-is-deprecated
-WINDOWPATH=2
-PATH=/home/hell/Desktop/repos/DeepINN/.venv/bin:/home/hell/VirtualLab/bin:/home/hell/anaconda3/bin:/home/hell/anaconda3/condabin:/home/hell/.cargo/bin:/home/hell/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/hell/.local/share/JetBrains/Toolbox/scripts:/home/hell/Julia/bin
-SESSION_MANAGER=local/MSI-X299-SLI-PLUS-7A93:@/tmp/.ICE-unix/627362,unix/MSI-X299-SLI-PLUS-7A93:/tmp/.ICE-unix/627362
-INVOCATION_ID=4cd81b6c3b934322aa885a2095b641dc
-PAPERSIZE=a4
-XDG_RUNTIME_DIR=/run/user/1000
-LC_ADDRESS=en_GB.UTF-8
-XDG_MENU_PREFIX=gnome-
-DISPLAY=:1
-LC_TELEPHONE=en_GB.UTF-8
-LANG=en_GB.UTF-8
-XDG_CURRENT_DESKTOP=Unity
-XMODIFIERS=@im=ibus
-XAUTHORITY=/run/user/1000/gdm/Xauthority
-XDG_SESSION_DESKTOP=ubuntu
-SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
-SHELL=/bin/zsh
-LC_NAME=en_GB.UTF-8
-INSIDE_NAUTILUS_PYTHON=
-QT_ACCESSIBILITY=1
-GDMSESSION=ubuntu
-LC_MEASUREMENT=en_GB.UTF-8
-GPG_AGENT_INFO=/run/user/1000/gnupg/S.gpg-agent:0:1
-LC_IDENTIFICATION=en_GB.UTF-8
-QT_IM_MODULE=ibus
-PWD=/home/hell/Desktop/repos/DeepINN/Tutorials/1. Geometry
-XDG_DATA_DIRS=/usr/share/ubuntu:/home/hell/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
-DBUS_STARTER_ADDRESS=unix:path=/run/user/1000/bus,guid=ebe53e0eab42e6eff161206864c35bd0
-XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg
-LC_NUMERIC=en_GB.UTF-8
-LC_PAPER=en_GB.UTF-8
-CHROME_DESKTOP=code-url-handler.desktop
-ORIGINAL_XDG_CURRENT_DESKTOP=ubuntu:GNOME
-GDK_BACKEND=x11
-TERM_PROGRAM=vscode
-TERM_PROGRAM_VERSION=1.80.1
-COLORTERM=truecolor
-GIT_ASKPASS=/usr/share/code/resources/app/extensions/git/dist/askpass.sh
-VSCODE_GIT_ASKPASS_NODE=/usr/share/code/code
-VSCODE_GIT_ASKPASS_EXTRA_ARGS=--ms-enable-electron-run-as-node
-VSCODE_GIT_ASKPASS_MAIN=/usr/share/code/resources/app/extensions/git/dist/askpass-main.js
-VSCODE_GIT_IPC_HANDLE=/run/user/1000/vscode-git-b369bea025.sock
-VSCODE_INJECTION=1
-VSCODE_NONCE=4d7cb355-ffb8-4eb8-9f16-838a760c1dfc
-ZDOTDIR=/home/hell
-USER_ZDOTDIR=/home/hell
-TERM=xterm-color
-OLDPWD=/home/hell/Desktop/repos/DeepINN/Tutorials/1. Geometry
-ZSH=/home/hell/.oh-my-zsh
-PAGER=cat
-LESS=-R
-LSCOLORS=Gxfxcxdxbxegedabagacad
-LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
-P9K_SSH=0
-CONDA_EXE=/home/hell/anaconda3/bin/conda
-_CE_M=
-_CE_CONDA=
-CONDA_PYTHON_EXE=/home/hell/anaconda3/bin/python
-CONDA_SHLVL=1
-CONDA_PREFIX=/home/hell/anaconda3
-CONDA_DEFAULT_ENV=base
-CONDA_PROMPT_MODIFIER=(base) 
-PROJ_LIB=/home/hell/anaconda3/share/proj
-PROJ_NETWORK=ON
-VL_DIR=/home/hell/VirtualLab
-PYTHON_EXECUTABLE=/home/hell/anaconda3/bin/python
-P9K_TTY=old
-_P9K_TTY=/dev/pts/0
-VIRTUAL_ENV=/home/hell/Desktop/repos/DeepINN/.venv
-PS1=(.venv) ${$((_p9k_on_expand()))+}%{${_p9k__raw_msg-}${_p9k__raw_msg::=}%}${(e)_p9k_t[7]}${_p9k__1-${${:-${_p9k__d::=0}${_p9k__rprompt::=${_p9k__1r-${${:-${_p9k__bg::=NONE}${_p9k__i::=0}${_p9k__sss::=}}+}${${:-${P9K_CONTENT::=}${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=8}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(000|000)}:+10}}${_p9k__n:=11}${_p9k__v::=&quot;✔&quot;}${_p9k__c::=&quot;${P9K_CONTENT}&quot;}${_p9k__c::=${_p9k__c//
-}}${_p9k__e::=${${_p9k__1rstatus+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/&lt;_p9k__w&gt;/$_p9k__w}${_p9k__c}%b%K{000\}%F{002\}${${(M)_p9k__e:#11}:+ }$_p9k__v${${:-${_p9k__w::=%b%K{000\}%F{002\} %b%K{000\}%F{002\}}${_p9k__sss::=%b%K{000\}%F{002\} %k%F{000\}%b%K{000\}%F{002\}}${_p9k__i::=1}${_p9k__bg::=000}}+}}${${:-&quot;${${(%):-%j}:#0}&quot;}:+${${:-${P9K_CONTENT::=&quot;&quot;}${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=12}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(000|000)}:+14}}${_p9k__n:=15}${_p9k__v::=}${_p9k__c::=&quot;${P9K_CONTENT}&quot;}${_p9k__c::=${_p9k__c//
-}}${_p9k__e::=${${_p9k__1rbackground_jobs+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/&lt;_p9k__w&gt;/$_p9k__w}${_p9k__c}%b%K{000\}%F{006\}${${(M)_p9k__e:#11}:+ }$_p9k__v${${:-${_p9k__w::=%b%K{000\}%F{006\} %b%K{000\}%F{006\}}${_p9k__sss::=%b%K{000\}%F{006\} %k%F{000\}%b%K{000\}%F{006\}}${_p9k__i::=3}${_p9k__bg::=000}}+}}}${${:-${P9K_CONTENT::=${(Q)${:-&quot;3.9.16\\ \\(anaconda3\\)&quot;}}}${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=16}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(004|004)}:+18}}${_p9k__n:=19}${P9K_VISUAL_IDENTIFIER::=}${_p9k__v::=}${_p9k__c::=&quot;${${${${CONDA_PROMPT_MODIFIER#\(}% }%\)}:-${CONDA_PREFIX:t}}&quot;}${_p9k__c::=${_p9k__c//
-}}${_p9k__e::=${${_p9k__1ranaconda+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/&lt;_p9k__w&gt;/$_p9k__w}${_p9k__c}%b%K{004\}%F{000\}${${(M)_p9k__e:#11}:+ }$_p9k__v${${:-${_p9k__w::=%b%K{004\}%F{000\} %b%K{004\}%F{000\}}${_p9k__sss::=%b%K{004\}%F{000\} %k%F{004\}%b%K{004\}%F{000\}}${_p9k__i::=7}${_p9k__bg::=004}}+}}${${:-&quot;${${(%):-%#}:#\#}&quot;}:+${${:-${P9K_CONTENT::=%n@%m}${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=20}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(000|000)}:+22}}${_p9k__n:=23}${_p9k__c::=}${_p9k__c::=${_p9k__c//
-}}${_p9k__e::=${${_p9k__1rcontext+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}0}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/&lt;_p9k__w&gt;/$_p9k__w}${_p9k__c}%b%K{000\}%F{003\}${${:-${_p9k__w::=%b%K{000\}%F{003\} %b%K{000\}%F{003\}}${_p9k__sss::=%b%K{000\}%F{003\} %k%F{000\}%b%K{000\}%F{003\}}${_p9k__i::=31}${_p9k__bg::=000}}+}}}${${:-&quot;${${(%):-%#}:#\%}&quot;}:+${${:-${P9K_CONTENT::=%n@%m}${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=24}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(000|000)}:+26}}${_p9k__n:=27}${_p9k__c::=&quot;${P9K_CONTENT}&quot;}${_p9k__c::=${_p9k__c//
-}}${_p9k__e::=${${_p9k__1rcontext+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}0}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/&lt;_p9k__w&gt;/$_p9k__w}${_p9k__c}%b%K{000\}%F{001\}${${:-${_p9k__w::=%b%K{000\}%F{001\} %b%K{000\}%F{001\}}${_p9k__sss::=%b%K{000\}%F{001\} %k%F{000\}%b%K{000\}%F{001\}}${_p9k__i::=31}${_p9k__bg::=000}}+}}}${${:-&quot;${${:-$_p9k__keymap.$_p9k__zle_state}:#(vicmd.*|vivis.*|vivli.*|*.*insert*)}&quot;}:+${${:-${P9K_CONTENT::=OVERTYPE}${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=28}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(003|003)}:+30}}${_p9k__n:=31}${_p9k__c::=&quot;${P9K_CONTENT}&quot;}${_p9k__c::=${_p9k__c//
-}}${_p9k__e::=${${_p9k__1rvi_mode+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}0}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/&lt;_p9k__w&gt;/$_p9k__w}${_p9k__c}%b%K{003\}%F{000\}${${:-${_p9k__w::=%b%K{003\}%F{000\} %b%K{003\}%F{000\}}${_p9k__sss::=%b%K{003\}%F{000\} %k%F{003\}%b%K{003\}%F{000\}}${_p9k__i::=39}${_p9k__bg::=003}}+}}}${${:-&quot;${(M)${:-$_p9k__keymap$_p9k__region_active}:#vicmd0}&quot;}:+${${:-${P9K_CONTENT::=NORMAL}${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=32}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(002|002)}:+34}}${_p9k__n:=35}${_p9k__c::=&quot;${P9K_CONTENT}&quot;}${_p9k__c::=${_p9k__c//
-}}${_p9k__e::=${${_p9k__1rvi_mode+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}0}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/&lt;_p9k__w&gt;/$_p9k__w}${_p9k__c}%b%K{002\}%F{000\}${${:-${_p9k__w::=%b%K{002\}%F{000\} %b%K{002\}%F{000\}}${_p9k__sss::=%b%K{002\}%F{000\} %k%F{002\}%b%K{002\}%F{000\}}${_p9k__i::=39}${_p9k__bg::=002}}+}}}${${:-&quot;${(M)${:-$_p9k__keymap$_p9k__region_active}:#(vicmd1|vivis?|vivli?)}&quot;}:+${${:-${P9K_CONTENT::=VISUAL}${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=36}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(004|004)}:+38}}${_p9k__n:=39}${_p9k__c::=&quot;${P9K_CONTENT}&quot;}${_p9k__c::=${_p9k__c//
-}}${_p9k__e::=${${_p9k__1rvi_mode+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}0}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/&lt;_p9k__w&gt;/$_p9k__w}${_p9k__c}%b%K{004\}%F{000\}${${:-${_p9k__w::=%b%K{004\}%F{000\} %b%K{004\}%F{000\}}${_p9k__sss::=%b%K{004\}%F{000\} %k%F{004\}%b%K{004\}%F{000\}}${_p9k__i::=39}${_p9k__bg::=004}}+}}}${${:-${P9K_CONTENT::=12:41:15}${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=40}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(007|007)}:+42}}${_p9k__n:=43}${_p9k__v::=}${_p9k__c::=&quot;${P9K_CONTENT}&quot;}${_p9k__c::=${_p9k__c//
-}}${_p9k__e::=${${_p9k__1rtime+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/&lt;_p9k__w&gt;/$_p9k__w}${_p9k__c}%b%K{007\}%F{000\}${${(M)_p9k__e:#11}:+ }$_p9k__v${${:-${_p9k__w::=%b%K{007\}%F{000\} %b%K{007\}%F{000\}}${_p9k__sss::=%b%K{007\}%F{000\} %k%F{007\}%b%K{007\}%F{000\}}${_p9k__i::=43}${_p9k__bg::=007}}+}}$_p9k__sss%b%k%f}${_p9k__1r_frame-&quot;%240F─╮&quot;}}${_p9k__lprompt::=${_p9k__1l_frame-&quot;%240F╭─&quot;}${_p9k__1l-${${:-${_p9k__bg::=NONE}${_p9k__i::=0}${_p9k__sss::=%f}}+}${${:-${P9K_CONTENT::=}${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=44}}${_p9k__n:=${${(M)${:-x007}:#x($_p9k__bg|${_p9k__bg:-0})}:+46}}${_p9k__n:=47}${_p9k__c::=&quot;${P9K_CONTENT}&quot;}${_p9k__c::=${_p9k__c//
-}}${_p9k__e::=${${_p9k__1los_icon+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}0}}}+}${${_p9k__e:#00}:+${${_p9k_t[$_p9k__n]/&lt;_p9k__ss&gt;/$_p9k__ss}/&lt;_p9k__s&gt;/$_p9k__s}${_p9k__c}%b%K{007\}%F{232\} ${${:-${_p9k__s::=%F{007\}}${_p9k__ss::=}${_p9k__sss::=%F{007\}}${_p9k__i::=1}${_p9k__bg::=007}}+}}${${:-${P9K_CONTENT::=&quot;%{d%}${:-&quot;%B%F{255}&quot;}${(Q)${:-&quot;\\~&quot;}}${:-&quot;%b%K{004}%F{254}&quot;}/${${${_p9k__d:#-*}:+Desktop}:-${:-&quot;%F{250}&quot;}Des${:-&quot;%b%K{004}%F{254}&quot;}${$((_p9k__d+=4))+}}/${${${_p9k__d:#-*}:+repos}:-${:-&quot;%F{250}&quot;}r${:-&quot;%b%K{004}%F{254}&quot;}${$((_p9k__d+=4))+}}/${:-&quot;%B%F{255}&quot;}DeepINN${:-&quot;%b%K{004}%F{254}&quot;}%{d%}&quot;}${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=88}}${_p9k__n:=${${(M)${:-x004}:#x($_p9k__bg|${_p9k__bg:-0})}:+90}}${_p9k__n:=91}${_p9k__v::=}${_p9k__c::=&quot;${P9K_CONTENT}&quot;}${_p9k__c::=${_p9k__c//
-}}${_p9k__e::=${${_p9k__1ldir+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${${_p9k_t[$_p9k__n]/&lt;_p9k__ss&gt;/$_p9k__ss}/&lt;_p9k__s&gt;/$_p9k__s}${_p9k__v}${${(M)_p9k__e:#11}:+ }${_p9k__c}%b%K{004\}%F{254\} ${${:-${_p9k__s::=%F{004\}}${_p9k__ss::=}${_p9k__sss::=%F{004\}}${_p9k__i::=2}${_p9k__bg::=004}}+}}${(e)_p9k__vcs}%b%k$_p9k__sss%b%k%f}}}+}${(e)_p9k_t[6]}${${_p9k__h::=0}+}${${_p9k__d::=$((_p9k__m-_p9k__h))}+}${_p9k__lprompt/\%\{d\%\}*\%\{d\%\}/${_p9k__1ldir-${:-&quot;%B%F{255}&quot;}${(Q)${:-&quot;\\~&quot;}}${:-&quot;%b%K{004}%F{254}&quot;}/${${${_p9k__d:#-*}:+Desktop}:-${:-&quot;%F{250}&quot;}Des${:-&quot;%b%K{004}%F{254}&quot;}${$((_p9k__d+=4))+}}/${${${_p9k__d:#-*}:+repos}:-${:-&quot;%F{250}&quot;}r${:-&quot;%b%K{004}%F{254}&quot;}${$((_p9k__d+=4))+}}/${:-&quot;%B%F{255}&quot;}DeepINN${:-&quot;%b%K{004}%F{254}&quot;}}}${${_p9k__m::=$((_p9k__d+_p9k__h))}+}${${_p9k__g+
-}:-${${${_p9k__m:#-*}:+${${_p9k__1g+${(pl.$((_p9k__m+1)).. .)}}:-${(pl.$((_p9k__m+1)).. .)}}$_p9k__rprompt${_p9k_t[$((1+!_p9k__ind))]}}:-
-}}}${_p9k__2-${_p9k__2l_frame-&quot;%240F╰─&quot;}${_p9k__2l-${${:-${_p9k__bg::=NONE}${_p9k__i::=0}${_p9k__sss::=%f}}+}%b%k$_p9k__sss%b%k%f${:-&quot; %b%k%f&quot;}}}${${COLUMNS::=$_p9k__clm}+}
-PYDEVD_USE_FRAME_EVAL=NO
-JPY_PARENT_PID=659474
-CLICOLOR=1
-FORCE_COLOR=1
-CLICOLOR_FORCE=1
-GIT_PAGER=cat
-MPLBACKEND=module://matplotlib_inline.backend_inline
 </pre></div>
 </div>
 </div>
@@ -519,6 +423,7 @@ MPLBACKEND=module://matplotlib_inline.backend_inline
 </div>
 </div>
 </div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -551,6 +456,24 @@ MPLBACKEND=module://matplotlib_inline.backend_inline
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../../docs_tutorial/docs_contribution.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Documentation compilation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="different%20sampling.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Basic sampling techniques</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
@@ -560,20 +483,6 @@ MPLBACKEND=module://matplotlib_inline.backend_inline
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-  </nav></div>
-
-</div></div>
               
             
           </div>
