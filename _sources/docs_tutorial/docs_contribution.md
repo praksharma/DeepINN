@@ -1,5 +1,5 @@
 
-## Documentation compilation
+# Documentation compilation
 The doc is created using [Jupyter-book](https://jupyterbook.org/en/stable/intro.html).
 
 ### Setting up Jupyter-books
