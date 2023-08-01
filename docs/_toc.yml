@@ -9,9 +9,26 @@ parts:
     - file: docs_tutorial/installation.md
     - file: docs_tutorial/contribution.md
     - file: docs_tutorial/docs_contribution.md
-  # - caption: Contribution
-  #   chapters:
-  #   - file: docs_tutorial/contribution.md
-  # - caption: Documentation compilation
-  #   chapters:
-  #   - file: docs_tutorial/docs_contribution.md
+  - caption: Geometry Tutorials
+    chapters:
+    - file: Tutorials/1. Geometry/Basic_domains.ipynb
+    - file: Tutorials/1. Geometry/different sampling.ipynb
+    - file: Tutorials/1. Geometry/domain_creation.ipynb
+    - file: Tutorials/1. Geometry/polygons_external_objects.ipynb
+    - file: Tutorials/1. Geometry/UKAEA SUT.ipynb
+  - caption: Constraint Tutorials
+    chapters:
+    - file: Tutorials/2. BC/1. dirichlet.ipynb
+    - file: Tutorials/2. BC/2. pde.ipynb
+  - caption: Gradient Tutorials
+    chapters:
+    - file: Tutorials/3. Gradients/1. Gradients.ipynb
+    - file: Tutorials/3. Gradients/2. higher derivative.ipynb
+  - caption: Domain Tutorials
+    chapters:
+    - file: Tutorials/4. Dataset/1. basic.ipynb
+  - caption: Fully connected neural network
+    chapters:
+    - file: Tutorials/5. FCNN/1. basic.ipynb
+    - file: Tutorials/5. FCNN/2. test.ipynb
+    - file: Tutorials/5. FCNN/3. model.ipynb
