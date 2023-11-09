@@ -2,9 +2,10 @@
 
 Last work : `DeepINN/constraint/gradients.py`
 ## Geometry
-- [ ] Geometry added but lot of bloats from TorchPhysics. Clean up geometry folder.
+- [ ] Geometry added but lot of bloats from TorchPhysics. Clean up geometry folder. In progress in "DeepINN/geometry_refactor".
 - [ ] Clean up utils folder.
 - [ ] Implement anchor points.
+- [ ] Add prediction plot function.
 
 ## Gradients
 - [x] Implement basic gradients.
@@ -26,6 +27,7 @@ Last work : `DeepINN/constraint/gradients.py`
 - [x] Basic geometry tutorials.
 - [x] Constraints tutorials.
 - [ ] Add template PDE in constraint directory.
+- [ ] There is some problem with FCNN tutorial. probably the feature scaling isn't working.
 
 ## Misc
 - [x] Migrate to JupyterBooks. 

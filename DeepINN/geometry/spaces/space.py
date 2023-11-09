@@ -1,147 +1,198 @@
 from collections import Counter, OrderedDict
 
-"""
-* A Counter is a dict subclass for counting hashable objects. It is a collection where elements are stored as dictionary keys and their counts are stored as dictionary values.
-* An OrderedDict is a dictionary subclass that remembers the order in which items are inserted.
-"""
 
 class Space(Counter, OrderedDict):
-    """
-    Base class to define the dimensions of the variables in the differential equation.
-    
+    """A Space defines (and assigns) the dimensions of the variables 
+    that appear in the differentialequation. This class sholud not be instanced
+    directly, rather the corresponding child classes.
+
     Parameters
     ----------
-    variables_dims: dict
-        A dict containing name of variables and the dimension of each variable.
+    variables_dims : dict
+        A dictionary containing the name of the variables and the dimension
+        of the respective variable.
     """
     def __init__(self, variables_dims):
         # set counter of variable names and their dimensionalities
-        # Since the Counter is inherited first, if the super().__init__ is consumed by Counter then the second super class won't receive the call.
         super().__init__(variables_dims)
 
-    # # Adding a magic method to overload the multiply operator using __mul__ 
-    # def __mul__(self, additional_space):
-    #     """
-    #     Combine two spaces to create higher dimension spaces.
-    #     E.g R1('x')*R1('y') is a two dimensional space where one axis is 'x'
-    #     and the other stands for 'y'.
-    #     """
-    #     assert isinstance(additional_space, Space), "The additional dimension isn't an instance of Space"
-    #     # Since we haven't defined __add__. Python will use Counter's __add__ method
-    #     return Space(self + additional_space)
-    
-    # # __contains__ is a predefined method checks if the key (a string) is present in the counter.
-    # # whenever we use `in` keyword with if condition involving instances of Space object, this self.__contains__ will run be override python's default __contains__.
-    # # here we override this functionpython's default __contains__
-    # # So if we do addition  __add__ we will end up executing self.__contains__
-    # def __contains__(self, space):
-    #     """
-    #     Check if the variables of other space are container in this space.
-    #     There are two possibilities. 
-    #     * method executed for internal dictionary operations such as addition
-    #     * method executed when checking if intersection of space and self is space.
-    #     That is why we need to modify python default __contains__ for instances of Space.
+    def __mul__(self, other):
+        """Creates the product space of the two input spaces. Allows the 
+        construction of higher dimensional spaces with 'mixed' variable names.
+        E.g R1('x')*R1('y') is a two dimensional space where one axis is 'x'
+        and the other stands for 'y'.
+        """
+        assert isinstance(other, Space)
+        return Space(self + other)
 
-    #     ChatGPT's description:
-    #     Override the membership test (in) for the Space class.
-    #     - If `space` is a string: Checks if the variable name (key) exists in this Space.
-    #     This is useful for both direct membership tests and internal operations 
-    #     (e.g., during dictionary-style key checking in addition).
-        
-    #     - If `space` is another Space object: Determines if the provided Space is 
-    #     entirely contained within the current Space (i.e., if it's a subset).
-    #     """
-    #     if isinstance(space,str):
-    #         #print("Flag: string")
-    #         # check if the space already contains the variable names.
-    #         return super().__contains__(space)
-    #     if isinstance(space, Space):
-    #         #print("Flag: Space")
-    #         return (self & space) == space
-    #     else:
-    #         return False
-    
-    # # This is a special method in Python which is invoked when we try to access items from containers like array or dictionary.
-    # # It's what gets called when you use square bracket notation to access elements, such as with lists, dictionaries, and strings.
-    # def __getitem__(self, val):
-    #     """
-    #     Since __getitem__ is used to retrieve items. There are three ways to retrieve items. str, slice, list or tuple.
+    def __contains__(self, space):
+        """Checks if the variables of the other space are contained in this
+        space.
 
-    #     1. In the case of a slice.
-    #     space_obj = Space({'a': 1, 'b': 2, 'c': 3, 'd': 4})
-    #     sub_space = space_obj['a':'c']  # returns a Space with {'a': 1, 'b': 2, 'c': 3}
-        
-    #     2. In the case of a tuple or a list
-    #     space_obj = Space({'a': 1, 'b': 2, 'c': 3, 'd': 4})
-    #     sub_space = space_obj[['a', 'c']]  # returns a Space with {'a': 1, 'c': 3}
-        
-    #     3. In all other cases then use Counter's __getitem__.
-    #     space_obj = Space({'a': 1, 'b': 2, 'c': 3, 'd': 4})
-    #     value = space_obj['a']  # returns 1
+        Parameters
+        ----------
+        space : torchphysics.spaces.Space
+            The other Space that should be checked if this is included.
+        """
+        if isinstance(space, str):
+            return super().__contains__(space)
+        if isinstance(space, Space):
+            return (self & space) == space
+        else:
+            return False
+    
+    def __getitem__(self, val):
+        """Returns a part of the Space dicitionary, specified in the
+        input. Mathematically, this constructs a subspace. 
 
-    #     Parameters
-    #     ----------
-    #     val : str, slice, list or tuple
-    #         The keys that correspond to the variables that should be used in the 
-    #         subspace.
-    #     """
-    #     if isinstance(val, slice): # if val is a slice
-    #         keys = list(self.keys())
-    #         new_slice = slice(keys.index(val.start) if val.start is not None else None,
-    #                           keys.index(val.stop) if val.stop is not None else None,
-    #                           val.step)
-    #         new_keys = keys[new_slice]
-    #         return Space({k: self[k] for k in new_keys})
-    #     if isinstance(val, list) or isinstance(val, tuple):
-    #         return Space({k: self[k] for k in val})
-    #     else:
-    #         return super().__getitem__(val)
+        Parameters
+        ----------
+        val : str, slice, list or tuple
+            The keys that correspond to the variables that should be used in the 
+            subspace.
+        """
+        if isinstance(val, slice):
+            keys = list(self.keys())
+            new_slice = slice(keys.index(val.start) if val.start is not None else None,
+                              keys.index(val.stop) if val.stop is not None else None,
+                              val.step)
+            new_keys = keys[new_slice]
+            return Space({k: self[k] for k in new_keys})
+        if isinstance(val, list) or isinstance(val, tuple):
+            return Space({k: self[k] for k in val})
+        else:
+            return super().__getitem__(val)
+
+    @property
+    def dim(self):
+        """Returns the dimension of the space (sum of factor spaces)
+        """
+        return sum(self.values())
     
-    # # To promote encapsulation, @property decorator allows you to print internal read-only attributes of choice.
-    # # @property also allows you to call a function without the parentheses. This is useful when these isn't any input attribute.
-    # @property
-    # def dim(self):
-    #     """
-    #     Return the dimension of the space.
-    #     """
-    #     # self is the class Space inheriting Counter, which inherits dict, so values() will return list of values for each key of variables_dims. then sum will sum them up.
-    #     return sum(self.values())
-    
-class R1(Space):
+    @property
+    def variables(self):
+        """
+        A unordered (!) set of variables.
+        """
+        return set(self.keys())
+
+    def __eq__(self, o: object) -> bool:
+        # use OrderedDict equal methode to get order-sensitive comparision
+        return OrderedDict.__eq__(self, o)
+
+    def __ne__(self, o: object) -> bool:
+        return OrderedDict.__ne__(self, o)
+
     """
-    Space to define 1D domain.
-    
+    Python recipe (see official Python docs) to maintain the insertion order.
+    This way, dimensions with identical variable names will be joined, all
+    other dimensions will be kept in the order of their creation by products
+    or __init__.
+    """
+    def __repr__(self):
+        return '%s(%r)' % (self.__class__.__name__, dict(OrderedDict(self)))
+
+    def __reduce__(self):
+        return self.__class__, (OrderedDict(self),)
+
+    def check_values_in_space(self, values):
+        """Checks if a given tensor is valid to belong to this space.
+
+        Parameters
+        ----------
+        values : torch.tensor
+            A tensor of values that should be checked.
+            Generally the last dimension of the tensor has to fit 
+            the dimension of this space.
+
+        Returns
+        -------
+        torch.tensor
+            In the case, that the values have not the corrected shape, but can
+            be reshaped, thet reshaped values are returned. 
+            This is used in the matrix-space.
+        """
+        assert values.shape[-1] == self.dim
+        return values
+
+
+class R1(Space):
+    """The space for one dimensional real numbers.
+
     Parameters
     ----------
     variable_name: str
         The name of the variable that belongs to this space.
-        It can be any string for coordinate axes.
     """
     def __init__(self, variable_name):
-        super().__init__(variable_name, 1)
+        super().__init__({variable_name: 1})
+
 
 class R2(Space):
-    """
-    Space to define 2D domain.
-    
+    """The space for two dimensional real numbers.
+
     Parameters
     ----------
     variable_name: str
         The name of the variable that belongs to this space.
-        It can be any string for coordinate axes.
     """
     def __init__(self, variable_name):
-        super().__init__(variable_name, 2)
+        super().__init__({variable_name: 2})
+
 
 class R3(Space):
-    """
-    Space to define 3D domain.
-    
+    """The space for three dimensional real numbers.
+
     Parameters
     ----------
     variable_name: str
         The name of the variable that belongs to this space.
-        It can be any string for coordinate axes.
     """
     def __init__(self, variable_name):
-        super().__init__(variable_name, 3)
+        super().__init__({variable_name: 3})
+
+
+class Rn(Space):
+    """The space for n dimensional real numbers.
+
+    Parameters
+    ----------
+    variable_name: str
+        The name of the variable that belongs to this space.
+    n : int
+        The dimension of this space.
+    """
+    def __init__(self, variable_name, n : int):
+        super().__init__({variable_name: n})
+
+
+# class M(Space):
+#     """The space for n x m matricies. (currently only real numbers)
+
+#     Parameters
+#     ----------
+#     variable_name: str
+#         The name of the variable that belongs to this space.
+#     n : int
+#         The number of rows of the matricies.
+#     m : int
+#         The number of columns.
+#     """
+#     def __init__(self, variable_name, n : int, m : int):
+#         self.rows = n
+#         self.columns = m
+#         super().__init__({variable_name: n*m})
+
+#     def __mul__(self, other):
+#         raise NotImplementedError("Matrix-spaces can not be multiplied!")
+
+#     def check_values_in_space(self, values):
+#         v_shape = values.shape
+#         if len(v_shape) >= 3 and v_shape[-2] == self.rows and v_shape[-1] == self.columns:
+#             # values aready in correct shape
+#             return values
+#         if values.shape[-1] == self.dim:
+#             # maybe values are given as a vector with correct dimension
+#             # -> reshape to matrix 
+#             return values.reshape(-1, self.rows, self.columns)
+#         raise AssertionError("Values do not belong to a matrix-space")
