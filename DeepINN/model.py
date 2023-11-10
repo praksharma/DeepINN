@@ -47,7 +47,9 @@ class Model():
         print("Network compiled", file=sys.stderr, flush=True)
 
     def train(self, iterations : int = None, display_every : int = None):
+        
         if self.iter == 0: # We are running a fresh training
+            self.training_history = []  # Initialize an empty list for storing loss values
             self.iterations = iterations
             # Load all the seeds, data types, devices etc.
             self.config.apply_seeds()
@@ -84,6 +86,9 @@ class Model():
             self.optimiser.step()
             if self.iter % (self.iterations/10) == 0:
                 print(f"Iteration: {self.iter+1} \t BC Loss: {self.BC_loss:0.4f}\t PDE Loss: {self.PDE_loss:0.4f} \t Loss: {self.total_loss:0.4f}")
+
+            # Append the total loss value to the training history list
+            self.training_history.append(self.total_loss.item())
 
             self.iter = self.iter + 1
         else:
