@@ -471,8 +471,8 @@ document.write(`
 <span class="sd">    1D Laplace equation.</span>
 <span class="sd">    u__x = 0 </span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">dy_x</span> <span class="o">=</span> <span class="n">dp</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">Jacobian</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-    <span class="n">dy_xx</span> <span class="o">=</span> <span class="n">dp</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">Jacobian</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">dy_x</span> <span class="o">=</span> <span class="n">dp</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">Jacobian</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">dy_xx</span> <span class="o">=</span> <span class="n">dp</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">Jacobian</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">dy_x</span><span class="p">)(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">dy_xx</span>
 </pre></div>
@@ -495,7 +495,7 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">activation</span> <span class="o">=</span> <span class="s2">&quot;tanh&quot;</span>
 <span class="n">initialiser</span> <span class="o">=</span> <span class="s2">&quot;Xavier normal&quot;</span>
-<span class="n">layer_size</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">layer_size</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -546,24 +546,32 @@ Domain compiled
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">iterations</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">iterations</span> <span class="o">=</span> <span class="mi">500</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 1 	 BC Loss: 0.1571	 PDE Loss: 2.1264 	 Loss: 2.2835
-Iteration: 11 	 BC Loss: 0.1627	 PDE Loss: 1.7743 	 Loss: 1.9369
-Iteration: 21 	 BC Loss: 0.1688	 PDE Loss: 1.4650 	 Loss: 1.6338
-Iteration: 31 	 BC Loss: 0.1752	 PDE Loss: 1.1992 	 Loss: 1.3744
-Iteration: 41 	 BC Loss: 0.1816	 PDE Loss: 0.9744 	 Loss: 1.1559
-Iteration: 51 	 BC Loss: 0.1878	 PDE Loss: 0.7862 	 Loss: 0.9740
-Iteration: 61 	 BC Loss: 0.1937	 PDE Loss: 0.6299 	 Loss: 0.8236
-Iteration: 71 	 BC Loss: 0.1992	 PDE Loss: 0.5009 	 Loss: 0.7001
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 1 	 BC Loss: 0.0226	 PDE Loss: 0.0000 	 Loss: 0.0226
+Iteration: 51 	 BC Loss: 0.0045	 PDE Loss: 0.0000 	 Loss: 0.0045
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 81 	 BC Loss: 0.2043	 PDE Loss: 0.3952 	 Loss: 0.5995
-Iteration: 91 	 BC Loss: 0.2090	 PDE Loss: 0.3094 	 Loss: 0.5184
-Iteration: 101 	 BC Loss: 0.2133	 PDE Loss: 0.2404 	 Loss: 0.4537
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 101 	 BC Loss: 0.0008	 PDE Loss: 0.0000 	 Loss: 0.0008
+Iteration: 151 	 BC Loss: 0.0001	 PDE Loss: 0.0000 	 Loss: 0.0001
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 201 	 BC Loss: 0.0000	 PDE Loss: 0.0000 	 Loss: 0.0000
+Iteration: 251 	 BC Loss: 0.0000	 PDE Loss: 0.0000 	 Loss: 0.0000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 301 	 BC Loss: 0.0000	 PDE Loss: 0.0000 	 Loss: 0.0000
+Iteration: 351 	 BC Loss: 0.0000	 PDE Loss: 0.0000 	 Loss: 0.0000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 401 	 BC Loss: 0.0000	 PDE Loss: 0.0000 	 Loss: 0.0000
+Iteration: 451 	 BC Loss: 0.0000	 PDE Loss: 0.0000 	 Loss: 0.0000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 501 	 BC Loss: 0.0000	 PDE Loss: 0.0000 	 Loss: 0.0000
 Training finished
 </pre></div>
 </div>
@@ -575,6 +583,75 @@ Training finished
 <span class="c1"># model.train(iterations = 2000)</span>
 </pre></div>
 </div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">network</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FullyConnected(
+  (activation): Tanh()
+  (linears): ModuleList(
+    (0): Linear(in_features=1, out_features=2, bias=True)
+    (1): Linear(in_features=2, out_features=1, bias=True)
+  )
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coordinates_list</span> <span class="o">=</span> <span class="n">dp</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">tensor2numpy</span><span class="p">([</span><span class="n">model</span><span class="o">.</span><span class="n">collocation_point_sample</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">boundary_point_sample</span><span class="p">])</span>
+<span class="n">solution_list</span> <span class="o">=</span> <span class="n">dp</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">tensor2numpy</span><span class="p">([</span><span class="n">model</span><span class="o">.</span><span class="n">collocation_forward</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">BC_forward</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">training_history</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">coordinates_list</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">solution_list</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;collocation points&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">coordinates_list</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">solution_list</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;boundary points&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="s1">&#39;minor&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/3072d23d0bf93687b41553e91d3a983f159d8373f7f3fcbd70c7b2f28a1f9fe8.png" src="../../_images/3072d23d0bf93687b41553e91d3a983f159d8373f7f3fcbd70c7b2f28a1f9fe8.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Iterations&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Loss&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Loss&#39;)
+</pre></div>
+</div>
+<img alt="../../_images/1459543182e98571eff8a5a5d7e1d6a2d258a2d519aadc067dfb542213223109.png" src="../../_images/1459543182e98571eff8a5a5d7e1d6a2d258a2d519aadc067dfb542213223109.png" />
 </div>
 </div>
 </section>
