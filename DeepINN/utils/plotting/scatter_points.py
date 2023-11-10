@@ -12,10 +12,10 @@ def scatter(subspace, *samplers, dpi=100, save=False):
 
     Parameters
     ----------
-    subspace : torchphysics.problem.Space
+    subspace : dp.problem.Space
         The (sub-)space of which the points should be plotted.
         Only plotting for dimensions <= 3 is possible.
-    *samplers : torchphysics.problem.Samplers
+    *samplers : dp.problem.Samplers
         The diffrent samplers for which the points should be plotted.
         The plot for each sampler will be created in the order there were
         passed in.
@@ -97,3 +97,5 @@ def _scatter_3D(points, labels, dpi, save):
     ax.set_zlabel(labels[2])
     if save:
         plt.savefig('geom.jpg', dpi = dpi,bbox_inches='tight',transparent=True)
+        
+

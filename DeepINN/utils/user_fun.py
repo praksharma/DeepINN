@@ -311,3 +311,9 @@ class DomainUserFunction(UserFunction):
                 return self.fun
             else: 
                 return torch.tensor(self.fun, device=device).float()
+            
+def tensor2numpy(tensor_list):
+    """
+    Converts a list of torch.tensors to numpy arrays.
+    """
+    return [tensor.detach().cpu().numpy() for tensor in tensor_list]
