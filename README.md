@@ -90,5 +90,6 @@ docker image rm -f IMAGE_ID
 The UML diagram is generated using `pyreverse`. This provides an overview of the codebase.
 
 ```sh
-pyreverse -o png DeepINN/
+cd UML\ diagrams
+pyreverse -o pdf ../DeepINN/
 ```
