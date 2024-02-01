@@ -15,9 +15,9 @@ Last work : `DeepINN/constraint/gradients.py`
 ## Constraints
 - [X] Implement the prescribed BC part in constraint/ boundary_loss dirichletBC.
 - [X] Implement PDE loss constraint.
-- [ ] Implement gradients.
+- [x] Implement gradients.
 - [ ] Implement lazy evaluation of gradients.
-- [ ] Implement more constrainst.
+- [ ] Implement more constraint.
 
 ## Architectures
 - [x] Implement fully connected NN.
@@ -27,7 +27,7 @@ Last work : `DeepINN/constraint/gradients.py`
 - [x] Basic geometry tutorials.
 - [x] Constraints tutorials.
 - [ ] Add template PDE in constraint directory.
-- [ ] There is some problem with FCNN tutorial. probably the feature scaling isn't working.
+- [x] There was some problem with FCNN tutorial. It was incorrect PDE.
 
 ## Misc
 - [x] Migrate to JupyterBooks. 
