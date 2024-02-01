@@ -17,7 +17,7 @@ Last work : `DeepINN/constraint/gradients.py`
 - [X] Implement PDE loss constraint.
 - [x] Implement gradients.
 - [ ] Implement lazy evaluation of gradients.
-- [ ] Implement more constrainst.
+- [ ] Implement more constraint.
 
 ## Architectures
 - [x] Implement fully connected NN.

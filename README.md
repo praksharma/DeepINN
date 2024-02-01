@@ -85,3 +85,10 @@ The only solution is to delete them one by one using the IMAGE_ID.
 ```sh
 docker image rm -f IMAGE_ID
 ```
+
+### UML diagram
+The UML diagram is generated using `pyreverse`. This provides an overview of the codebase.
+
+```sh
+pyreverse -o png DeepINN/
+```
