@@ -4,7 +4,7 @@
 title: DeepINN
 author: Prakhar Sharma
 copyright: "2023"
-logo: logo.png
+logo: logo_deepinn.png
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
