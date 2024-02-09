@@ -32,3 +32,7 @@ Last work : `DeepINN/constraint/gradients.py`
 ## Misc
 - [x] Migrate to JupyterBooks. 
 - [x] Move everything after contribution in the [readme.md](readme.md) to the docs.
+
+## Technical stuff
+- [ ] Substitute `raise NotImplementedError` to `@abc.abstractmethod` for better ABC implementation on concrete classes (classes where the member function are actually implemented).
+- [ ] Use `functool.wraps` so that the decorator doesn't loose the metadata such as docsting.
