@@ -16,10 +16,9 @@ class Generic(Dataset):
         super().__init__()
 
         self.pde = pde_equation
-        self.pde_sampler = collocation_object
+        self.pde_sampler = collocation_object # class of the PDE
         # if the bcs is not list, then make it a list
-        self.bc_sampler = bc_object if isinstance(bc_object, (list)) else [bc_object]
-
+        self.bc_sampler = bc_object if isinstance(bc_object, (list)) else [bc_object] # class of the boundary condition
         self.bc_list_len = len(self.bc_sampler)
     
     def sample_collocation_points(self):

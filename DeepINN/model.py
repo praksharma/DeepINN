@@ -28,10 +28,10 @@ class Model():
 
     def compile_domain(self):
         # sample collocation points
-        self.collocation_point_sample, self.collocation_point_labels = self.domain.sample_collocation_labels()
+        self.collocation_point_sample, self.collocation_point_labels = self.domain.sample_collocation_labels() # list of collocation points and their labels both as tensors
 
         # sample boundary points
-        self.boundary_point_sample, self.boundary_point_labels = self.domain.sample_boundary_labels()
+        self.boundary_point_sample, self.boundary_point_labels = self.domain.sample_boundary_labels() # list of boundary points and their labels both as tensors
         print("Domain compiled", file=sys.stderr, flush=True)
 
     def compile_network(self):
@@ -59,6 +59,9 @@ class Model():
             # In 1D problem we need to combine the BCs as there is only one point for each BC, which returns an undefined feature scaling because the ub and lb are same in the denominator, so we get infinity
             # For problem with multiple points on each boundary, we don't need to combine them.
             if self.boundary_point_sample[0].size()[0] == 1: # if row is 1 in the particular boundary tensor
+                self.boundary_point_sample = torch.cat(self.boundary_point_sample, dim=0)
+                self.boundary_point_labels = torch.cat(self.boundary_point_labels, dim=0)
+            else:
                 self.boundary_point_sample = torch.cat(self.boundary_point_sample, dim=0)
                 self.boundary_point_labels = torch.cat(self.boundary_point_labels, dim=0)
 
