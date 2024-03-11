@@ -57,10 +57,9 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Tutorials/5. FCNN/3. model';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Tutorials/6. 2D heat conduction/1. model';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="prev" title="Forward pass" href="2.%20test.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -121,6 +120,8 @@
     <div class="bd-container__inner bd-page-width">
       
       
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -210,10 +211,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../4.%20Dataset/1.%20basic.html">Training dataset</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Fully connected neural network</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="1.%20basic.html">Basics of network design</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2.%20test.html">Forward pass</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">FCNN training</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../5.%20FCNN/1.%20basic.html">Basics of network design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.%20FCNN/2.%20test.html">Forward pass</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.%20FCNN/3.%20model.html">FCNN training</a></li>
 </ul>
 
     </div>
@@ -285,7 +286,7 @@
       
       
       
-      <li><a href="https://github.com/praksharma/DeepINN/issues/new?title=Issue%20on%20page%20%2FTutorials/5. FCNN/3. model.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/praksharma/DeepINN/issues/new?title=Issue%20on%20page%20%2FTutorials/6. 2D heat conduction/1. model.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -315,7 +316,7 @@
       
       
       
-      <li><a href="../../_sources/Tutorials/5. FCNN/3. model.ipynb" target="_blank"
+      <li><a href="../../_sources/Tutorials/6. 2D heat conduction/1. model.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -432,6 +433,7 @@ document.write(`
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../../&#39;</span><span class="p">)</span> <span class="c1"># two folders up</span>
 <span class="kn">import</span> <span class="nn">DeepINN</span> <span class="k">as</span> <span class="nn">dp</span>
 <span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 </div>
 </div>
@@ -449,38 +451,44 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A simple 1D geometry</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">dp</span><span class="o">.</span><span class="n">spaces</span><span class="o">.</span><span class="n">R1</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-<span class="n">Line</span> <span class="o">=</span> <span class="n">dp</span><span class="o">.</span><span class="n">domains</span><span class="o">.</span><span class="n">Interval</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">dp</span><span class="o">.</span><span class="n">spaces</span><span class="o">.</span><span class="n">R2</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">Rect</span> <span class="o">=</span> <span class="n">dp</span><span class="o">.</span><span class="n">domains</span><span class="o">.</span><span class="n">Parallelogram</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># unit square</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">left_bc</span> <span class="o">=</span> <span class="n">dp</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">DirichletBC</span><span class="p">(</span><span class="n">geom</span> <span class="o">=</span> <span class="n">Line</span><span class="p">,</span>
-                                      <span class="n">function</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">X</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.0</span><span class="p">]),</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">left_bc</span> <span class="o">=</span> <span class="n">dp</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">DirichletBC</span><span class="p">(</span><span class="n">geom</span> <span class="o">=</span> <span class="n">Rect</span><span class="p">,</span>
+                                      <span class="n">function</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">X</span><span class="p">:</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.0</span><span class="p">]),</span> <span class="c1"># this is a bug. We need to somehow involved X in the lambda otherwise it will give shape error.</span>
                                       <span class="n">sampling_strategy</span> <span class="o">=</span> <span class="s2">&quot;grid&quot;</span><span class="p">,</span>
-                                      <span class="n">no_points</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="c1"># you can use more points. there are conditions to deal with stupid conditions. </span>
-                                      <span class="n">filter_fn</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[:]</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">)</span>
-<span class="n">right_bc</span> <span class="o">=</span> <span class="n">dp</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">DirichletBC</span><span class="p">(</span><span class="n">geom</span> <span class="o">=</span> <span class="n">Line</span><span class="p">,</span>
-                                      <span class="n">function</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">X</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.0</span><span class="p">]),</span>
+                                      <span class="n">no_points</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> 
+                                      <span class="n">filter_fn</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">right_bc</span> <span class="o">=</span> <span class="n">dp</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">DirichletBC</span><span class="p">(</span><span class="n">geom</span> <span class="o">=</span> <span class="n">Rect</span><span class="p">,</span>
+                                      <span class="n">function</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">X</span><span class="p">:</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.0</span><span class="p">]),</span> <span class="c1"># this is a bug. We need to somehow involved X in the lambda otherwise it will give shape error.</span>
                                       <span class="n">sampling_strategy</span> <span class="o">=</span> <span class="s2">&quot;grid&quot;</span><span class="p">,</span>
-                                      <span class="n">no_points</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="c1"># you can use more points. there are conditions to deal with stupid conditions. </span>
-                                      <span class="n">filter_fn</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[:]</span> <span class="o">==</span> <span class="mf">1.0</span><span class="p">)</span>
-<span class="n">interior_points</span> <span class="o">=</span> <span class="n">dp</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">PDE</span><span class="p">(</span><span class="n">geom</span> <span class="o">=</span> <span class="n">Line</span><span class="p">,</span>
-                                    <span class="n">sampling_strategy</span><span class="o">=</span> <span class="s2">&quot;grid&quot;</span><span class="p">,</span>
-                                    <span class="n">no_points</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span>
+                                      <span class="n">no_points</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="c1"># you can use more points. there are conditions to deal with stupid conditions. </span>
+                                      <span class="n">filter_fn</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mf">1.0</span><span class="p">)</span>
+
+<span class="n">interior_points</span> <span class="o">=</span> <span class="n">dp</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">PDE</span><span class="p">(</span><span class="n">geom</span> <span class="o">=</span> <span class="n">Rect</span><span class="p">,</span>
+                                    <span class="n">sampling_strategy</span><span class="o">=</span> <span class="s2">&quot;LatinHypercube&quot;</span><span class="p">,</span>
+                                    <span class="n">no_points</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dp.utils.scatter(X, interior_points.sampler_object(), dpi = 50)</span>
-<span class="c1"># dp.utils.scatter(X, left_bc.sampler_object(), dpi = 50)</span>
-<span class="c1"># dp.utils.scatter(X, right_bc.sampler_object(), dpi = 50)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dp</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">interior_points</span><span class="o">.</span><span class="n">sampler_object</span><span class="p">(),</span> <span class="n">dpi</span> <span class="o">=</span> <span class="mi">50</span><span class="p">)</span> <span class="c1"># collocation points</span>
+<span class="n">dp</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">left_bc</span><span class="o">.</span><span class="n">sampler_object</span><span class="p">(),</span> <span class="n">dpi</span> <span class="o">=</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">dp</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">right_bc</span><span class="o">.</span><span class="n">sampler_object</span><span class="p">(),</span> <span class="n">dpi</span> <span class="o">=</span> <span class="mi">50</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/b40f1d4e460a5ce1d617a66d9abf5bfb1cd3864b3bec8ee832c7be3d6c171eff.png" src="../../_images/b40f1d4e460a5ce1d617a66d9abf5bfb1cd3864b3bec8ee832c7be3d6c171eff.png" />
+<img alt="../../_images/f152359c04d7d085924e67f788fe63d9dfe61b7f6c5062ff3af9de2591e8cb0a.png" src="../../_images/f152359c04d7d085924e67f788fe63d9dfe61b7f6c5062ff3af9de2591e8cb0a.png" />
+<img alt="../../_images/4ab540eb8d7ff23dad48ed54dc877d827b3686bb096481070ec6b3840fa0eb22.png" src="../../_images/4ab540eb8d7ff23dad48ed54dc877d827b3686bb096481070ec6b3840fa0eb22.png" />
 </div>
 </div>
 </section>
@@ -490,13 +498,17 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">laplace</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    1D Laplace equation.</span>
-<span class="sd">    u__x = 0 </span>
+<span class="sd">    2D Laplace equation.</span>
+<span class="sd">    u__x + u__y = 0</span>
+<span class="sd">     i is always zero because output to the NN is always 1D</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">dy_x</span> <span class="o">=</span> <span class="n">dp</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">Jacobian</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">dy_xx</span> <span class="o">=</span> <span class="n">dp</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">Jacobian</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">dy_x</span><span class="p">)(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">dy_xx</span>
+    <span class="n">dy_y</span> <span class="o">=</span> <span class="n">dp</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">Jacobian</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">dy_yy</span> <span class="o">=</span> <span class="n">dp</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">Jacobian</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">dy_y</span><span class="p">)(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">dy_xx</span> <span class="o">+</span> <span class="n">dy_yy</span>
 </pre></div>
 </div>
 </div>
@@ -517,7 +529,7 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">activation</span> <span class="o">=</span> <span class="s2">&quot;tanh&quot;</span>
 <span class="n">initialiser</span> <span class="o">=</span> <span class="s2">&quot;Xavier normal&quot;</span>
-<span class="n">layer_size</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">layer_size</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -541,12 +553,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/hell/Desktop/repos/DeepINN/Tutorials/5. FCNN/../../DeepINN/geometry/samplers/grid_samplers.py:78: UserWarning: First iteration did not find any valid grid points, for
-                             the given filter.
-                             Will try again with n = 10 * self.n_points. Or
-                             else use only random points!
-  warnings.warn(&quot;&quot;&quot;First iteration did not find any valid grid points, for
-Domain compiled
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Domain compiled
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Network compiled
@@ -568,34 +575,44 @@ Domain compiled
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">iterations</span> <span class="o">=</span> <span class="mi">500</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">iterations</span> <span class="o">=</span> <span class="mi">5000</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 1 	 BC Loss: 0.1876	 PDE Loss: 0.0000 	 Loss: 0.1876
-Iteration: 51 	 BC Loss: 0.0990	 PDE Loss: 0.0000 	 Loss: 0.0990
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 1 	 BC Loss: 0.0018	 PDE Loss: 150.6618 	 Loss: 150.6636
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 101 	 BC Loss: 0.0583	 PDE Loss: 0.0000 	 Loss: 0.0583
-Iteration: 151 	 BC Loss: 0.0352	 PDE Loss: 0.0000 	 Loss: 0.0352
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 501 	 BC Loss: 0.2732	 PDE Loss: 0.9934 	 Loss: 1.2665
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 201 	 BC Loss: 0.0205	 PDE Loss: 0.0000 	 Loss: 0.0205
-Iteration: 251 	 BC Loss: 0.0112	 PDE Loss: 0.0000 	 Loss: 0.0112
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 1001 	 BC Loss: 0.3051	 PDE Loss: 0.0254 	 Loss: 0.3305
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 301 	 BC Loss: 0.0057	 PDE Loss: 0.0000 	 Loss: 0.0057
-Iteration: 351 	 BC Loss: 0.0027	 PDE Loss: 0.0000 	 Loss: 0.0027
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 1501 	 BC Loss: 0.2981	 PDE Loss: 0.0206 	 Loss: 0.3187
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 401 	 BC Loss: 0.0011	 PDE Loss: 0.0000 	 Loss: 0.0011
-Iteration: 451 	 BC Loss: 0.0004	 PDE Loss: 0.0000 	 Loss: 0.0004
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 2001 	 BC Loss: 0.2930	 PDE Loss: 0.0178 	 Loss: 0.3108
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 501 	 BC Loss: 0.0002	 PDE Loss: 0.0000 	 Loss: 0.0002
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 2501 	 BC Loss: 0.2885	 PDE Loss: 0.0154 	 Loss: 0.3039
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 3001 	 BC Loss: 0.2842	 PDE Loss: 0.0133 	 Loss: 0.2975
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 3501 	 BC Loss: 0.2801	 PDE Loss: 0.0113 	 Loss: 0.2914
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 4001 	 BC Loss: 0.2759	 PDE Loss: 0.0094 	 Loss: 0.2854
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 4501 	 BC Loss: 0.2718	 PDE Loss: 0.0076 	 Loss: 0.2794
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 5001 	 BC Loss: 0.2676	 PDE Loss: 0.0058 	 Loss: 0.2734
 Training finished
-Time taken: &#39;trainer&#39; in 2.9356 secs
+Time taken: &#39;trainer&#39; in 28.5579 secs
 </pre></div>
 </div>
 </div>
@@ -618,7 +635,7 @@ Time taken: &#39;trainer&#39; in 2.9356 secs
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FullyConnected(
   (activation): Tanh()
   (linears): ModuleList(
-    (0): Linear(in_features=1, out_features=2, bias=True)
+    (0): Linear(in_features=2, out_features=2, bias=True)
     (1): Linear(in_features=2, out_features=1, bias=True)
   )
 )
@@ -651,14 +668,15 @@ Time taken: &#39;trainer&#39; in 2.9356 secs
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">coordinates_list</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">solution_list</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;collocation points&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">coordinates_list</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">solution_list</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;boundary points&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">coordinates_list</span><span class="p">[</span><span class="mi">0</span><span class="p">][:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">coordinates_list</span><span class="p">[</span><span class="mi">0</span><span class="p">][:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">solution_list</span><span class="p">[</span><span class="mi">0</span><span class="p">][:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;collocation points&quot;</span><span class="p">,</span>  <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;plasma&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">coordinates_list</span><span class="p">[</span><span class="mi">1</span><span class="p">][:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">coordinates_list</span><span class="p">[</span><span class="mi">1</span><span class="p">][:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">solution_list</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;boundary points&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;plasma&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="s1">&#39;minor&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/503fdc76aa0d00d0edd83a26bf748346fd99bced3335c1a9ba19fbca0b4e9981.png" src="../../_images/503fdc76aa0d00d0edd83a26bf748346fd99bced3335c1a9ba19fbca0b4e9981.png" />
+<img alt="../../_images/3df77bf4fb0d31c43e7ed595a750460740a6731e7c9df9f55b13a590716f5692.png" src="../../_images/3df77bf4fb0d31c43e7ed595a750460740a6731e7c9df9f55b13a590716f5692.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -674,7 +692,7 @@ Time taken: &#39;trainer&#39; in 2.9356 secs
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Loss&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/07ac1071c10314a37e1b4519828e061097c795b970420d4421ff7539ebb98be8.png" src="../../_images/07ac1071c10314a37e1b4519828e061097c795b970420d4421ff7539ebb98be8.png" />
+<img alt="../../_images/f260a30766ddca56535085e963c017cb561af5d0a4e8228f917b6f67fea8b539.png" src="../../_images/f260a30766ddca56535085e963c017cb561af5d0a4e8228f917b6f67fea8b539.png" />
 </div>
 </div>
 </section>
@@ -693,7 +711,7 @@ Time taken: &#39;trainer&#39; in 2.9356 secs
         },
         kernelOptions: {
             name: "python3",
-            path: "./Tutorials/5. FCNN"
+            path: "./Tutorials/6. 2D heat conduction"
         },
         predefinedOutput: true
     }
@@ -710,15 +728,6 @@ Time taken: &#39;trainer&#39; in 2.9356 secs
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="2.%20test.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Forward pass</p>
-      </div>
-    </a>
 </div>
                 </footer>
               
