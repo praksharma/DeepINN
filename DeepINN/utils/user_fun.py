@@ -5,6 +5,8 @@ the needed arguments and passing them on to the original function.
 import inspect
 import copy 
 import torch
+import functools
+import time
 
 from ..geometry.spaces.points import Points
 
@@ -317,3 +319,14 @@ def tensor2numpy(tensor_list):
     Converts a list of torch.tensors to numpy arrays.
     """
     return [tensor.detach().cpu().numpy() for tensor in tensor_list]
+
+def timer(func):
+    """Print the runtime of the decorated function"""
+    @functools.wraps(func)
+    def wrapper_timer(*args, **kwargs):
+        start_time = time.perf_counter()
+        func(*args, **kwargs) # execute the decorated function
+        end_time = time.perf_counter()
+        run_time = end_time - start_time
+        print(f"Time taken: {func.__name__!r} in {run_time:.4f} secs")
+    return wrapper_timer

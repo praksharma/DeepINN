@@ -1,7 +1,8 @@
 import torch
 import sys
 from .backend import loss_metric, choose_optimiser
-from  .config import Config
+from .config import Config
+from .utils import timer
 
 class Model():
     """
@@ -46,8 +47,7 @@ class Model():
                                                  )
         print("Network compiled", file=sys.stderr, flush=True)
 
-    def train(self, iterations : int = None, display_every : int = None):
-        
+    def initialise_training(self, iterations : int = None):
         if self.iter == 0: # We are running a fresh training
             self.training_history = []  # Initialize an empty list for storing loss values
             self.iterations = iterations
@@ -65,6 +65,18 @@ class Model():
             # Set requires_grad=True for self.collocation_point_sample
             self.collocation_point_sample.requires_grad = True
 
+    def train(self, iterations : int = None, display_every : int = 1):
+        """_summary_
+
+        Args:
+            iterations (int): _description_. Number of iterations.
+            display_every (int, optional): _description_. Display the loss every display_every iterations. Defaults to 1.           
+        """
+        self.initialise_training(iterations)
+        self.trainer()
+        
+    @timer
+    def trainer(self):
         # implement training loop
         while self.iter <= self.iterations:
 
@@ -93,6 +105,4 @@ class Model():
             self.iter = self.iter + 1
         else:
             print('Training finished')
-            #elapsed = time.time() - start_time                
-            #print('Training time: %.2f' % (elapsed))
-            #print(f"Final loss: {total_loss}")
+
