@@ -52,9 +52,9 @@ class Model():
             self.training_history = []  # Initialize an empty list for storing loss values
             self.iterations = iterations
             # Load all the seeds, data types, devices etc.
-            self.config.apply_seeds()
-            self.config.apply_float_type()
-            self.config.default_device()
+            # self.config.apply_seeds()
+            # self.config.apply_float_type()
+            # self.config.default_device()
 
             # In 1D problem we need to combine the BCs as there is only one point for each BC, which returns an undefined feature scaling because the ub and lb are same in the denominator, so we get infinity
             # For problem with multiple points on each boundary, we don't need to combine them.
@@ -74,7 +74,7 @@ class Model():
         """
         self.initialise_training(iterations)
         self.trainer()
-        
+
     @timer
     def trainer(self):
         # implement training loop

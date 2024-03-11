@@ -1,7 +1,7 @@
 import torch
 from .base import BaseNetwork
 
-class FullyConnected(BaseNetwork, torch.nn.Module):
+class FullyConnected(BaseNetwork):
     """
     Implementation of Fully Connected neural network
     """
@@ -28,10 +28,10 @@ class FullyConnected(BaseNetwork, torch.nn.Module):
         self.linears = torch.nn.ModuleList([torch.nn.Linear(self.layer_size[i], self.layer_size[i+1]) for i in range(0,len(self.layer_size)-1)])
 
         # initialise the weights
-        self.init()
+        self.weight_init()
 
 
-    def init(self):
+    def weight_init(self):
         # weight initialisation
         for i in range(len(self.layer_size)-1):
             
