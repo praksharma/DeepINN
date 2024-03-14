@@ -1,7 +1,8 @@
 import torch
 import sys
 from .backend import loss_metric, choose_optimiser
-from  .config import Config
+from .config import Config
+from .utils import timer
 
 class Model():
     """
@@ -27,10 +28,10 @@ class Model():
 
     def compile_domain(self):
         # sample collocation points
-        self.collocation_point_sample, self.collocation_point_labels = self.domain.sample_collocation_labels()
+        self.collocation_point_sample, self.collocation_point_labels = self.domain.sample_collocation_labels() # list of collocation points and their labels both as tensors
 
         # sample boundary points
-        self.boundary_point_sample, self.boundary_point_labels = self.domain.sample_boundary_labels()
+        self.boundary_point_sample, self.boundary_point_labels = self.domain.sample_boundary_labels() # list of boundary points and their labels both as tensors
         print("Domain compiled", file=sys.stderr, flush=True)
 
     def compile_network(self):
@@ -46,25 +47,39 @@ class Model():
                                                  )
         print("Network compiled", file=sys.stderr, flush=True)
 
-    def train(self, iterations : int = None, display_every : int = None):
-        
+    def initialise_training(self, iterations : int = None):
         if self.iter == 0: # We are running a fresh training
             self.training_history = []  # Initialize an empty list for storing loss values
             self.iterations = iterations
             # Load all the seeds, data types, devices etc.
-            self.config.apply_seeds()
-            self.config.apply_float_type()
-            self.config.default_device()
+            # self.config.apply_seeds()
+            # self.config.apply_float_type()
+            # self.config.default_device()
 
             # In 1D problem we need to combine the BCs as there is only one point for each BC, which returns an undefined feature scaling because the ub and lb are same in the denominator, so we get infinity
             # For problem with multiple points on each boundary, we don't need to combine them.
             if self.boundary_point_sample[0].size()[0] == 1: # if row is 1 in the particular boundary tensor
                 self.boundary_point_sample = torch.cat(self.boundary_point_sample, dim=0)
                 self.boundary_point_labels = torch.cat(self.boundary_point_labels, dim=0)
+            else:
+                self.boundary_point_sample = torch.cat(self.boundary_point_sample, dim=0)
+                self.boundary_point_labels = torch.cat(self.boundary_point_labels, dim=0)
 
             # Set requires_grad=True for self.collocation_point_sample
             self.collocation_point_sample.requires_grad = True
 
+    def train(self, iterations : int = None, display_every : int = 1):
+        """_summary_
+
+        Args:
+            iterations (int): _description_. Number of iterations.
+            display_every (int, optional): _description_. Display the loss every display_every iterations. Defaults to 1.           
+        """
+        self.initialise_training(iterations)
+        self.trainer()
+
+    @timer
+    def trainer(self):
         # implement training loop
         while self.iter <= self.iterations:
 
@@ -93,6 +108,4 @@ class Model():
             self.iter = self.iter + 1
         else:
             print('Training finished')
-            #elapsed = time.time() - start_time                
-            #print('Training time: %.2f' % (elapsed))
-            #print(f"Final loss: {total_loss}")
+

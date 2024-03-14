@@ -11,6 +11,10 @@ class Config:
         self.device = device
         # Add more configuration parameters as needed
 
+        self.apply_seeds()
+        self.apply_float_type()
+        self.default_device()
+
     def apply_seeds(self):
         torch.manual_seed(self.random_seed)
 
