@@ -216,7 +216,11 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../5.%20FCNN/1.%20basic.html">Basics of network design</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../5.%20FCNN/2.%20test.html">Forward pass</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../5.%20FCNN/3.%20model.html">FCNN training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.%20FCNN/3.%20model.html">1D Laplace Equation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2D heat conduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../6.%202D%20heat%20conduction/1.%20model.html">2D Laplace Equation</a></li>
 </ul>
 
     </div>
@@ -589,7 +593,7 @@ We need to investigate whether we need this.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([1.4514], grad_fn=&lt;AddBackward0&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([1.5027], grad_fn=&lt;AddBackward0&gt;)
 </pre></div>
 </div>
 </div>
@@ -604,7 +608,7 @@ We need to investigate whether we need this.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gradient (dy/dx): tensor([0.3535, 0.6050])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gradient (dy/dx): tensor([0.6726, 0.4256])
 </pre></div>
 </div>
 </div>
@@ -617,7 +621,7 @@ We need to investigate whether we need this.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([0.3535, 0.6050], grad_fn=&lt;SqueezeBackward1&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([0.6726, 0.4256], grad_fn=&lt;SqueezeBackward1&gt;)
 </pre></div>
 </div>
 </div>
@@ -641,8 +645,8 @@ We need to investigate whether we need this.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(tensor([1.4514], grad_fn=&lt;AddBackward0&gt;),
- tensor([1.4514], grad_fn=&lt;AddBackward0&gt;))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(tensor([1.5027], grad_fn=&lt;AddBackward0&gt;),
+ tensor([1.5027], grad_fn=&lt;AddBackward0&gt;))
 </pre></div>
 </div>
 </div>
@@ -701,10 +705,7 @@ We need to investigate whether we need this.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gradient (dy/dx): 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[ 0.5403, -0.4161],
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gradient (dy/dx): tensor([[ 0.5403, -0.4161],
         [-0.9900, -0.6536]])
 </pre></div>
 </div>
@@ -755,7 +756,7 @@ We need to investigate whether we need this.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/8c5fc112fc2230ead56f14dc9dce986259fe7dc8305bf1320a2013b3be4cde6c.png" src="../../_images/8c5fc112fc2230ead56f14dc9dce986259fe7dc8305bf1320a2013b3be4cde6c.png" />
+<img alt="../../_images/d1275a39f2f5341d08d4b7fe552a0827170392a069a4094fd5602ed73b3e435b.png" src="../../_images/d1275a39f2f5341d08d4b7fe552a0827170392a069a4094fd5602ed73b3e435b.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -810,10 +811,10 @@ We need to investigate whether we need this.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f750007aa90&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7b9c52997580&gt;
 </pre></div>
 </div>
-<img alt="../../_images/17c4a27f795d2a51f4bbbbb0a659c37d531673549fd333f1332e89ff49588845.png" src="../../_images/17c4a27f795d2a51f4bbbbb0a659c37d531673549fd333f1332e89ff49588845.png" />
+<img alt="../../_images/ec6ca55da4612b122ba57444d7f5d1ef35817e47b7d983ce1ba4ba1c4a9dfca4.png" src="../../_images/ec6ca55da4612b122ba57444d7f5d1ef35817e47b7d983ce1ba4ba1c4a9dfca4.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -842,106 +843,106 @@ We need to investigate whether we need this.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gradient (dy/dx): tensor([[0.2930, 0.0000],
-        [1.0825, 0.0000],
-        [0.5305, 0.0000],
-        [1.9212, 0.0000],
-        [0.6438, 0.0000],
-        [1.9175, 0.0000],
-        [0.7091, 0.0000],
-        [1.9677, 0.0000],
-        [0.7350, 0.0000],
-        [0.6300, 0.0000],
-        [1.4992, 0.0000],
-        [0.9642, 0.0000],
-        [0.3607, 0.0000],
-        [0.9573, 0.0000],
-        [1.0166, 0.0000],
-        [0.8906, 0.0000],
-        [1.1743, 0.0000],
-        [0.9489, 0.0000],
-        [0.0287, 0.0000],
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gradient (dy/dx): tensor([[0.6733, 0.0000],
+        [0.6685, 0.0000],
+        [1.0176, 0.0000],
+        [1.6641, 0.0000],
+        [1.9967, 0.0000],
+        [0.6386, 0.0000],
+        [1.2306, 0.0000],
+        [1.7671, 0.0000],
+        [1.3454, 0.0000],
+        [1.8883, 0.0000],
+        [1.2225, 0.0000],
+        [0.8830, 0.0000],
+        [1.5180, 0.0000],
+        [1.6009, 0.0000],
+        [1.1501, 0.0000],
+        [1.4308, 0.0000],
+        [1.0261, 0.0000],
+        [1.5584, 0.0000],
+        [1.1730, 0.0000],
+        [0.7687, 0.0000],
+        [0.8867, 0.0000],
+        [1.4550, 0.0000],
+        [0.8041, 0.0000],
+        [1.5583, 0.0000],
+        [1.5580, 0.0000],
+        [1.7970, 0.0000],
+        [0.5377, 0.0000],
+        [0.6538, 0.0000],
+        [1.7832, 0.0000],
+        [0.4909, 0.0000],
+        [0.8772, 0.0000],
+        [0.5479, 0.0000],
+        [0.1592, 0.0000],
+        [0.0740, 0.0000],
         [0.3507, 0.0000],
-        [0.4230, 0.0000],
-        [1.9440, 0.0000],
-        [0.6972, 0.0000],
-        [0.5564, 0.0000],
-        [0.2747, 0.0000],
-        [1.8570, 0.0000],
-        [1.0975, 0.0000],
-        [0.6516, 0.0000],
-        [1.6687, 0.0000],
-        [0.3874, 0.0000],
-        [0.5045, 0.0000],
-        [1.9092, 0.0000],
-        [1.5228, 0.0000],
-        [0.5527, 0.0000],
-        [1.4221, 0.0000],
-        [1.9412, 0.0000],
-        [0.9828, 0.0000],
-        [1.9175, 0.0000],
-        [0.7495, 0.0000],
-        [1.3001, 0.0000],
-        [1.0497, 0.0000],
-        [1.0901, 0.0000],
-        [1.2823, 0.0000],
-        [0.9442, 0.0000],
-        [0.2218, 0.0000],
-        [1.9692, 0.0000],
-        [0.5136, 0.0000],
-        [0.5020, 0.0000],
-        [0.2023, 0.0000],
-        [0.3678, 0.0000],
-        [0.7819, 0.0000],
-        [1.7172, 0.0000],
-        [0.0191, 0.0000],
-        [0.3216, 0.0000],
-        [0.4669, 0.0000],
-        [0.5493, 0.0000],
-        [1.2346, 0.0000],
-        [1.3253, 0.0000],
-        [0.7525, 0.0000],
-        [1.6583, 0.0000],
-        [0.8198, 0.0000],
-        [1.6443, 0.0000],
-        [1.0415, 0.0000],
-        [0.1759, 0.0000],
-        [0.8441, 0.0000],
-        [1.4261, 0.0000],
-        [0.4104, 0.0000],
-        [1.6782, 0.0000],
-        [1.8920, 0.0000],
-        [0.1505, 0.0000],
-        [1.7075, 0.0000],
-        [0.7404, 0.0000],
-        [0.9070, 0.0000],
-        [0.1176, 0.0000],
-        [0.4098, 0.0000],
-        [1.0612, 0.0000],
-        [1.1286, 0.0000],
-        [0.0742, 0.0000],
-        [0.6482, 0.0000],
-        [0.9419, 0.0000],
-        [0.4051, 0.0000],
-        [0.8317, 0.0000],
-        [0.3231, 0.0000],
-        [1.0585, 0.0000],
-        [0.3959, 0.0000],
-        [1.1475, 0.0000],
-        [0.9752, 0.0000],
-        [1.3819, 0.0000],
-        [0.4927, 0.0000],
-        [0.0505, 0.0000],
-        [0.3465, 0.0000],
-        [1.9483, 0.0000],
-        [1.2960, 0.0000],
-        [1.3112, 0.0000],
-        [1.1125, 0.0000],
-        [0.8214, 0.0000],
-        [0.3367, 0.0000],
-        [1.5440, 0.0000],
-        [0.7444, 0.0000],
-        [1.2778, 0.0000]])
+        [0.9643, 0.0000],
+        [0.0257, 0.0000],
+        [0.5479, 0.0000],
+        [1.2799, 0.0000],
+        [1.7555, 0.0000],
+        [0.0478, 0.0000],
+        [1.9280, 0.0000],
+        [0.6001, 0.0000],
+        [0.9786, 0.0000],
+        [0.3538, 0.0000],
+        [1.6759, 0.0000],
+        [0.8473, 0.0000],
+        [1.0966, 0.0000],
+        [0.3954, 0.0000],
+        [0.9916, 0.0000],
+        [0.3232, 0.0000],
+        [1.4093, 0.0000],
+        [1.1539, 0.0000],
+        [1.3791, 0.0000],
+        [1.8612, 0.0000],
+        [1.5549, 0.0000],
+        [1.1919, 0.0000],
+        [0.9863, 0.0000],
+        [1.0187, 0.0000],
+        [0.9845, 0.0000],
+        [1.5591, 0.0000],
+        [0.8240, 0.0000],
+        [0.3481, 0.0000],
+        [1.8477, 0.0000],
+        [1.0604, 0.0000],
+        [1.3063, 0.0000],
+        [1.8167, 0.0000],
+        [0.5160, 0.0000],
+        [0.2010, 0.0000],
+        [0.6498, 0.0000],
+        [1.6442, 0.0000],
+        [0.4801, 0.0000],
+        [1.3056, 0.0000],
+        [0.1697, 0.0000],
+        [0.2895, 0.0000],
+        [0.9645, 0.0000],
+        [1.3555, 0.0000],
+        [0.8697, 0.0000],
+        [0.7806, 0.0000],
+        [1.7696, 0.0000],
+        [0.2021, 0.0000],
+        [0.8245, 0.0000],
+        [0.3633, 0.0000],
+        [1.2962, 0.0000],
+        [0.0385, 0.0000],
+        [1.0791, 0.0000],
+        [1.5716, 0.0000],
+        [0.1625, 0.0000],
+        [0.2896, 0.0000],
+        [1.5592, 0.0000],
+        [1.9910, 0.0000],
+        [0.7264, 0.0000],
+        [1.9206, 0.0000],
+        [0.6380, 0.0000],
+        [1.8515, 0.0000],
+        [1.3841, 0.0000],
+        [1.5092, 0.0000],
+        [0.7644, 0.0000],
+        [0.4880, 0.0000],
+        [0.4294, 0.0000]])
 </pre></div>
 </div>
 </div>
@@ -962,106 +963,106 @@ We need to investigate whether we need this.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[0.2930],
-        [1.0825],
-        [0.5305],
-        [1.9212],
-        [0.6438],
-        [1.9175],
-        [0.7091],
-        [1.9677],
-        [0.7350],
-        [0.6300],
-        [1.4992],
-        [0.9642],
-        [0.3607],
-        [0.9573],
-        [1.0166],
-        [0.8906],
-        [1.1743],
-        [0.9489],
-        [0.0287],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[0.6733],
+        [0.6685],
+        [1.0176],
+        [1.6641],
+        [1.9967],
+        [0.6386],
+        [1.2306],
+        [1.7671],
+        [1.3454],
+        [1.8883],
+        [1.2225],
+        [0.8830],
+        [1.5180],
+        [1.6009],
+        [1.1501],
+        [1.4308],
+        [1.0261],
+        [1.5584],
+        [1.1730],
+        [0.7687],
+        [0.8867],
+        [1.4550],
+        [0.8041],
+        [1.5583],
+        [1.5580],
+        [1.7970],
+        [0.5377],
+        [0.6538],
+        [1.7832],
+        [0.4909],
+        [0.8772],
+        [0.5479],
+        [0.1592],
+        [0.0740],
         [0.3507],
-        [0.4230],
-        [1.9440],
-        [0.6972],
-        [0.5564],
-        [0.2747],
-        [1.8570],
-        [1.0975],
-        [0.6516],
-        [1.6687],
-        [0.3874],
-        [0.5045],
-        [1.9092],
-        [1.5228],
-        [0.5527],
-        [1.4221],
-        [1.9412],
-        [0.9828],
-        [1.9175],
-        [0.7495],
-        [1.3001],
-        [1.0497],
-        [1.0901],
-        [1.2823],
-        [0.9442],
-        [0.2218],
-        [1.9692],
-        [0.5136],
-        [0.5020],
-        [0.2023],
-        [0.3678],
-        [0.7819],
-        [1.7172],
-        [0.0191],
-        [0.3216],
-        [0.4669],
-        [0.5493],
-        [1.2346],
-        [1.3253],
-        [0.7525],
-        [1.6583],
-        [0.8198],
-        [1.6443],
-        [1.0415],
-        [0.1759],
-        [0.8441],
-        [1.4261],
-        [0.4104],
-        [1.6782],
-        [1.8920],
-        [0.1505],
-        [1.7075],
-        [0.7404],
-        [0.9070],
-        [0.1176],
-        [0.4098],
-        [1.0612],
-        [1.1286],
-        [0.0742],
-        [0.6482],
-        [0.9419],
-        [0.4051],
-        [0.8317],
-        [0.3231],
-        [1.0585],
-        [0.3959],
-        [1.1475],
-        [0.9752],
-        [1.3819],
-        [0.4927],
-        [0.0505],
-        [0.3465],
-        [1.9483],
-        [1.2960],
-        [1.3112],
-        [1.1125],
-        [0.8214],
-        [0.3367],
-        [1.5440],
-        [0.7444],
-        [1.2778]], grad_fn=&lt;IndexBackward0&gt;)
+        [0.9643],
+        [0.0257],
+        [0.5479],
+        [1.2799],
+        [1.7555],
+        [0.0478],
+        [1.9280],
+        [0.6001],
+        [0.9786],
+        [0.3538],
+        [1.6759],
+        [0.8473],
+        [1.0966],
+        [0.3954],
+        [0.9916],
+        [0.3232],
+        [1.4093],
+        [1.1539],
+        [1.3791],
+        [1.8612],
+        [1.5549],
+        [1.1919],
+        [0.9863],
+        [1.0187],
+        [0.9845],
+        [1.5591],
+        [0.8240],
+        [0.3481],
+        [1.8477],
+        [1.0604],
+        [1.3063],
+        [1.8167],
+        [0.5160],
+        [0.2010],
+        [0.6498],
+        [1.6442],
+        [0.4801],
+        [1.3056],
+        [0.1697],
+        [0.2895],
+        [0.9645],
+        [1.3555],
+        [0.8697],
+        [0.7806],
+        [1.7696],
+        [0.2021],
+        [0.8245],
+        [0.3633],
+        [1.2962],
+        [0.0385],
+        [1.0791],
+        [1.5716],
+        [0.1625],
+        [0.2896],
+        [1.5592],
+        [1.9910],
+        [0.7264],
+        [1.9206],
+        [0.6380],
+        [1.8515],
+        [1.3841],
+        [1.5092],
+        [0.7644],
+        [0.4880],
+        [0.4294]], grad_fn=&lt;IndexBackward0&gt;)
 </pre></div>
 </div>
 </div>

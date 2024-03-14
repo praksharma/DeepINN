@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>FCNN training &#8212; DeepINN</title>
+    <title>2D Laplace Equation &#8212; DeepINN</title>
   
   
   
@@ -60,7 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Tutorials/6. 2D heat conduction/1. model';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="prev" title="FCNN training" href="../5.%20FCNN/3.%20model.html" />
+    <link rel="prev" title="1D Laplace Equation" href="../5.%20FCNN/3.%20model.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -213,7 +213,11 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../5.%20FCNN/1.%20basic.html">Basics of network design</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../5.%20FCNN/2.%20test.html">Forward pass</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../5.%20FCNN/3.%20model.html">FCNN training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.%20FCNN/3.%20model.html">1D Laplace Equation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2D heat conduction</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2D Laplace Equation</a></li>
 </ul>
 
     </div>
@@ -399,7 +403,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>FCNN training</h1>
+    <h1>2D Laplace Equation</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -423,8 +427,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="fcnn-training">
-<h1>FCNN training<a class="headerlink" href="#fcnn-training" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="d-laplace-equation">
+<h1>2D Laplace Equation<a class="headerlink" href="#d-laplace-equation" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is only valid when the package is not installed</span>
@@ -485,9 +489,9 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3e551dfa0ac6c8fba3e1cf10b99e9b96140714dc4b9c4d800bb7495db77c07c9.png" src="../../_images/3e551dfa0ac6c8fba3e1cf10b99e9b96140714dc4b9c4d800bb7495db77c07c9.png" />
-<img alt="../../_images/f7733251c507381d97572c8ae9259c94af0b8e9430d937d6ee5bee5aa6b792a7.png" src="../../_images/f7733251c507381d97572c8ae9259c94af0b8e9430d937d6ee5bee5aa6b792a7.png" />
-<img alt="../../_images/e754ccdd2212e52bfdd01034f5b6645c74421a45679409e51ebd4356a2c68256.png" src="../../_images/e754ccdd2212e52bfdd01034f5b6645c74421a45679409e51ebd4356a2c68256.png" />
+<img alt="../../_images/530b7522c1a10091415613c8843e942fdd4013dd3e299b5a81b6923d62581570.png" src="../../_images/530b7522c1a10091415613c8843e942fdd4013dd3e299b5a81b6923d62581570.png" />
+<img alt="../../_images/08c45b821567ebca213d0ead72aa3a382d7007763f4a7c0f0fa1a14d194e7ef4.png" src="../../_images/08c45b821567ebca213d0ead72aa3a382d7007763f4a7c0f0fa1a14d194e7ef4.png" />
+<img alt="../../_images/89dd6fa700a7bff4943121b8fe9527fa42e112d6f2b79cb914eda766608febeb.png" src="../../_images/89dd6fa700a7bff4943121b8fe9527fa42e112d6f2b79cb914eda766608febeb.png" />
 </div>
 </div>
 </section>
@@ -579,39 +583,39 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 1 	 BC Loss: 0.8491	 PDE Loss: 14.7276 	 Loss: 15.5767
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 1 	 BC Loss: 2.1201	 PDE Loss: 130.2115 	 Loss: 132.3316
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 501 	 BC Loss: 0.3197	 PDE Loss: 0.0032 	 Loss: 0.3229
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 501 	 BC Loss: 1.4108	 PDE Loss: 5.5380 	 Loss: 6.9488
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 1001 	 BC Loss: 0.2541	 PDE Loss: 0.0012 	 Loss: 0.2553
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 1001 	 BC Loss: 0.7701	 PDE Loss: 0.2101 	 Loss: 0.9802
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 1501 	 BC Loss: 0.2520	 PDE Loss: 0.0010 	 Loss: 0.2530
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 1501 	 BC Loss: 0.5292	 PDE Loss: 0.0038 	 Loss: 0.5330
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 2001 	 BC Loss: 0.2514	 PDE Loss: 0.0008 	 Loss: 0.2522
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 2001 	 BC Loss: 0.4286	 PDE Loss: 0.0025 	 Loss: 0.4310
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 2501 	 BC Loss: 0.2508	 PDE Loss: 0.0006 	 Loss: 0.2514
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 2501 	 BC Loss: 0.3487	 PDE Loss: 0.0019 	 Loss: 0.3506
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 3001 	 BC Loss: 0.2501	 PDE Loss: 0.0005 	 Loss: 0.2507
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 3001 	 BC Loss: 0.2640	 PDE Loss: 0.0014 	 Loss: 0.2654
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 3501 	 BC Loss: 0.2495	 PDE Loss: 0.0005 	 Loss: 0.2500
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 3501 	 BC Loss: 0.1792	 PDE Loss: 0.0009 	 Loss: 0.1801
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 4001 	 BC Loss: 0.2489	 PDE Loss: 0.0004 	 Loss: 0.2494
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 4001 	 BC Loss: 0.1062	 PDE Loss: 0.0006 	 Loss: 0.1068
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 4501 	 BC Loss: 0.2485	 PDE Loss: 0.0004 	 Loss: 0.2489
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 4501 	 BC Loss: 0.0540	 PDE Loss: 0.0004 	 Loss: 0.0544
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 5001 	 BC Loss: 0.2481	 PDE Loss: 0.0005 	 Loss: 0.2485
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 5001 	 BC Loss: 0.0232	 PDE Loss: 0.0002 	 Loss: 0.0234
 Training finished
-Time taken: &#39;trainer&#39; in 27.7122 secs
+Time taken: &#39;trainer&#39; in 27.7988 secs
 </pre></div>
 </div>
 </div>
@@ -667,15 +671,15 @@ Time taken: &#39;trainer&#39; in 27.7122 secs
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">coordinates_list</span><span class="p">[</span><span class="mi">0</span><span class="p">][:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">coordinates_list</span><span class="p">[</span><span class="mi">0</span><span class="p">][:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">solution_list</span><span class="p">[</span><span class="mi">0</span><span class="p">][:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;collocation points&quot;</span><span class="p">,</span>  <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;plasma&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">coordinates_list</span><span class="p">[</span><span class="mi">1</span><span class="p">][:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">coordinates_list</span><span class="p">[</span><span class="mi">1</span><span class="p">][:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">solution_list</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;boundary points&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;plasma&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">coordinates_list</span><span class="p">[</span><span class="mi">0</span><span class="p">][:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">coordinates_list</span><span class="p">[</span><span class="mi">0</span><span class="p">][:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">solution_list</span><span class="p">[</span><span class="mi">0</span><span class="p">][:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;collocation points&quot;</span><span class="p">,</span>  <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;plasma&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">coordinates_list</span><span class="p">[</span><span class="mi">1</span><span class="p">][:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">coordinates_list</span><span class="p">[</span><span class="mi">1</span><span class="p">][:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">solution_list</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;boundary points&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;plasma&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span><span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="s1">&#39;minor&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/7fb2d7372ff7095a03a2c6c3887993d785d7fb802670617528a1fd1ac14b3c12.png" src="../../_images/7fb2d7372ff7095a03a2c6c3887993d785d7fb802670617528a1fd1ac14b3c12.png" />
+<img alt="../../_images/39d80410820569dc0331ba86f5c8d2193001d3836020e4748def8b4bb12eff42.png" src="../../_images/39d80410820569dc0331ba86f5c8d2193001d3836020e4748def8b4bb12eff42.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -691,7 +695,7 @@ Time taken: &#39;trainer&#39; in 27.7122 secs
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Loss&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/84b9d2ef9b39ac9048441be1b0869fc9d735296a1b54c4b8dea12976c6fbdf9e.png" src="../../_images/84b9d2ef9b39ac9048441be1b0869fc9d735296a1b54c4b8dea12976c6fbdf9e.png" />
+<img alt="../../_images/25fddf1fad6af54746955fa162f7f9b0e9c64c6968e53759096fe85fcdc4ccbb.png" src="../../_images/25fddf1fad6af54746955fa162f7f9b0e9c64c6968e53759096fe85fcdc4ccbb.png" />
 </div>
 </div>
 </section>
@@ -733,7 +737,7 @@ Time taken: &#39;trainer&#39; in 27.7122 secs
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">FCNN training</p>
+        <p class="prev-next-title">1D Laplace Equation</p>
       </div>
     </a>
 </div>

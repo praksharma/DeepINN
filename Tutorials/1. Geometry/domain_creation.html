@@ -216,7 +216,11 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../5.%20FCNN/1.%20basic.html">Basics of network design</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../5.%20FCNN/2.%20test.html">Forward pass</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../5.%20FCNN/3.%20model.html">FCNN training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.%20FCNN/3.%20model.html">1D Laplace Equation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2D heat conduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../6.%202D%20heat%20conduction/1.%20model.html">2D Laplace Equation</a></li>
 </ul>
 
     </div>
@@ -570,10 +574,6 @@ one has to set it over the <strong>set_volume</strong> methode.</p>
                              If you need the exact volume for sampling,
                              use domain.set_volume()
   warnings.warn(&quot;&quot;&quot;Exact volume of this union is not known, will use the
-/home/hell/Desktop/repos/DeepINN/Tutorials/1. Geometry/../../DeepINN/geometry/domains/domainoperations/sampler_helper.py:50: UserWarning: Will sample random points in the created domain operation, with
-                     a for loop over all input parameters, in total: 1
-                     This may slow down the training.
-  warnings.warn(f&quot;&quot;&quot;Will sample random points in the created domain operation, with
 /home/hell/Desktop/repos/DeepINN/Tutorials/1. Geometry/../../DeepINN/geometry/domains/domainoperations/sampler_helper.py:163: UserWarning: Will sample random points in the created domain operation, with
                      a for loop over all input parameters, in total: 1
                      This may slow down the training.
@@ -583,11 +583,15 @@ one has to set it over the <strong>set_volume</strong> methode.</p>
                          If you need the exact volume for sampling,
                          use domain.set_volume()
   warnings.warn(&quot;&quot;&quot;Exact volume of this intersection-boundary is not known,
+/home/hell/Desktop/repos/DeepINN/Tutorials/1. Geometry/../../DeepINN/geometry/domains/domainoperations/sampler_helper.py:50: UserWarning: Will sample random points in the created domain operation, with
+                     a for loop over all input parameters, in total: 1
+                     This may slow down the training.
+  warnings.warn(f&quot;&quot;&quot;Will sample random points in the created domain operation, with
 </pre></div>
 </div>
 <img alt="../../_images/39095da4e3681b4f883f05aa877e4258a41d3ad8118b76c49435e0a8d4765351.png" src="../../_images/39095da4e3681b4f883f05aa877e4258a41d3ad8118b76c49435e0a8d4765351.png" />
-<img alt="../../_images/601ea68e24e42916aa6a7b94030fdf2a4b96fbbd2f71c4fd41fd65e22f15e63b.png" src="../../_images/601ea68e24e42916aa6a7b94030fdf2a4b96fbbd2f71c4fd41fd65e22f15e63b.png" />
-<img alt="../../_images/c4b10e252b4a42b63b7f8ba3ffe9dcf0a37f09dfb9b5015ffea44f3b92154f09.png" src="../../_images/c4b10e252b4a42b63b7f8ba3ffe9dcf0a37f09dfb9b5015ffea44f3b92154f09.png" />
+<img alt="../../_images/ae1d790f90877cf596b916473acbdce58b4c552893ed07782878212cc3a267a6.png" src="../../_images/ae1d790f90877cf596b916473acbdce58b4c552893ed07782878212cc3a267a6.png" />
+<img alt="../../_images/0b65fb81935d9b536bac49b9ce552789a856696698c60790203554ddf2b235dc.png" src="../../_images/0b65fb81935d9b536bac49b9ce552789a856696698c60790203554ddf2b235dc.png" />
 </div>
 </div>
 <p>For the product, we create the Cartesian product of an interval and circle to get a cylinder:</p>

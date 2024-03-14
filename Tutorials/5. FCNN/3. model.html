@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>FCNN training &#8212; DeepINN</title>
+    <title>1D Laplace Equation &#8212; DeepINN</title>
   
   
   
@@ -60,6 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Tutorials/5. FCNN/3. model';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2D Laplace Equation" href="../6.%202D%20heat%20conduction/1.%20model.html" />
     <link rel="prev" title="Forward pass" href="2.%20test.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -213,7 +214,11 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="1.%20basic.html">Basics of network design</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2.%20test.html">Forward pass</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">FCNN training</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">1D Laplace Equation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2D heat conduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../6.%202D%20heat%20conduction/1.%20model.html">2D Laplace Equation</a></li>
 </ul>
 
     </div>
@@ -399,7 +404,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>FCNN training</h1>
+    <h1>1D Laplace Equation</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -423,8 +428,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="fcnn-training">
-<h1>FCNN training<a class="headerlink" href="#fcnn-training" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="d-laplace-equation">
+<h1>1D Laplace Equation<a class="headerlink" href="#d-laplace-equation" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is only valid when the package is not installed</span>
@@ -573,29 +578,29 @@ Domain compiled
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 1 	 BC Loss: 0.1876	 PDE Loss: 0.0000 	 Loss: 0.1876
-Iteration: 51 	 BC Loss: 0.0990	 PDE Loss: 0.0000 	 Loss: 0.0990
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 1 	 BC Loss: 0.0286	 PDE Loss: 0.0000 	 Loss: 0.0286
+Iteration: 51 	 BC Loss: 0.0061	 PDE Loss: 0.0000 	 Loss: 0.0061
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 101 	 BC Loss: 0.0583	 PDE Loss: 0.0000 	 Loss: 0.0583
-Iteration: 151 	 BC Loss: 0.0352	 PDE Loss: 0.0000 	 Loss: 0.0352
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 101 	 BC Loss: 0.0021	 PDE Loss: 0.0000 	 Loss: 0.0021
+Iteration: 151 	 BC Loss: 0.0004	 PDE Loss: 0.0000 	 Loss: 0.0004
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 201 	 BC Loss: 0.0205	 PDE Loss: 0.0000 	 Loss: 0.0205
-Iteration: 251 	 BC Loss: 0.0112	 PDE Loss: 0.0000 	 Loss: 0.0112
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 201 	 BC Loss: 0.0001	 PDE Loss: 0.0000 	 Loss: 0.0001
+Iteration: 251 	 BC Loss: 0.0000	 PDE Loss: 0.0000 	 Loss: 0.0000
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 301 	 BC Loss: 0.0057	 PDE Loss: 0.0000 	 Loss: 0.0057
-Iteration: 351 	 BC Loss: 0.0027	 PDE Loss: 0.0000 	 Loss: 0.0027
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 301 	 BC Loss: 0.0000	 PDE Loss: 0.0000 	 Loss: 0.0000
+Iteration: 351 	 BC Loss: 0.0000	 PDE Loss: 0.0000 	 Loss: 0.0000
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 401 	 BC Loss: 0.0011	 PDE Loss: 0.0000 	 Loss: 0.0011
-Iteration: 451 	 BC Loss: 0.0004	 PDE Loss: 0.0000 	 Loss: 0.0004
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 401 	 BC Loss: 0.0000	 PDE Loss: 0.0000 	 Loss: 0.0000
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 501 	 BC Loss: 0.0002	 PDE Loss: 0.0000 	 Loss: 0.0002
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration: 451 	 BC Loss: 0.0000	 PDE Loss: 0.0000 	 Loss: 0.0000
+Iteration: 501 	 BC Loss: 0.0000	 PDE Loss: 0.0000 	 Loss: 0.0000
 Training finished
-Time taken: &#39;trainer&#39; in 2.9356 secs
+Time taken: &#39;trainer&#39; in 3.1389 secs
 </pre></div>
 </div>
 </div>
@@ -658,7 +663,7 @@ Time taken: &#39;trainer&#39; in 2.9356 secs
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/503fdc76aa0d00d0edd83a26bf748346fd99bced3335c1a9ba19fbca0b4e9981.png" src="../../_images/503fdc76aa0d00d0edd83a26bf748346fd99bced3335c1a9ba19fbca0b4e9981.png" />
+<img alt="../../_images/19050569b3df551f5f93dd00977ad379ba45e8bd50c1a9168a71cb6e542bca6e.png" src="../../_images/19050569b3df551f5f93dd00977ad379ba45e8bd50c1a9168a71cb6e542bca6e.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -674,7 +679,7 @@ Time taken: &#39;trainer&#39; in 2.9356 secs
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Loss&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/07ac1071c10314a37e1b4519828e061097c795b970420d4421ff7539ebb98be8.png" src="../../_images/07ac1071c10314a37e1b4519828e061097c795b970420d4421ff7539ebb98be8.png" />
+<img alt="../../_images/f43fd397329119ac04d988e9cc8234ef260c1308bcb8b20889a035eafe9b4070.png" src="../../_images/f43fd397329119ac04d988e9cc8234ef260c1308bcb8b20889a035eafe9b4070.png" />
 </div>
 </div>
 </section>
@@ -718,6 +723,15 @@ Time taken: &#39;trainer&#39; in 2.9356 secs
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Forward pass</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="../6.%202D%20heat%20conduction/1.%20model.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">2D Laplace Equation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
