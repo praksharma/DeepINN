@@ -44,9 +44,10 @@ class DirichletBC():
         else:
             return self.sampler(self.geom.boundary, n_points = self.no_points, filter_fn = self.filter_fn)
     
-    def sample_labels(self, sampled_points):
+    def sample_labels(self, sampled_points: list):
         # evaluate the BC labels at each training point.
-        return self.function(sampled_points)
+        #return torch.tensor(list(map(self.function, sampled_points)))
+        return self.function(sampled_points) 
 
 class PDE():
     """
@@ -72,7 +73,7 @@ class PDE():
         if filter_fn is not None:
             raise NotImplementedError("Filter function isn't implemented for collocation points. Use filter_fn=None.")
         
-                # assign the correct sampling strategy
+        # assign the correct sampling strategy
         if self.sampling_strategy in strategy_dict:
             self.sampler = strategy_dict[self.sampling_strategy]
         else:

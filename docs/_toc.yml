@@ -32,3 +32,7 @@ parts:
     - file: Tutorials/5. FCNN/1. basic.ipynb
     - file: Tutorials/5. FCNN/2. test.ipynb
     - file: Tutorials/5. FCNN/3. model.ipynb
+  - caption: 2D heat conduction
+    chapters:
+    - file: Tutorials/6. 2D heat conduction/1. Laplace_FCDNN.ipynb
+    - file; Tutorials/6. 2D heat conduction/2. Laplace_FourierNN.ipynb
