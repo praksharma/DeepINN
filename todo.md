@@ -28,6 +28,8 @@ Last work : `DeepINN/constraint/gradients.py`
 - [x] Constraints tutorials.
 - [ ] Add template PDE in constraint directory.
 - [x] There was some problem with FCNN tutorial. It was incorrect PDE.
+- [x] Add 2D discontinuous heat conduction problem
+- [x] Add Fourier neural network and Deep Galerkin method architecture.
 
 ## Misc
 - [x] Migrate to JupyterBooks. 
