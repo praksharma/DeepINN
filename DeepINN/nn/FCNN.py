@@ -40,7 +40,8 @@ class FullyConnected(BaseNetwork):
             self.initialiser(self.linears[i].weight.data, gain=1.0)
             
             # set biases to zero
-            torch.nn.init.zeros_(self.linears[i].bias.data)
+            # torch.nn.init.zeros_(self.linears[i].bias.data)
+            torch.nn.init.constant_(self.linears[i].bias.data, 0.01)
 
     def forward(self, input):
         """

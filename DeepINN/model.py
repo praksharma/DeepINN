@@ -52,18 +52,21 @@ class Model():
             self.training_history = []  # Initialize an empty list for storing loss values
             self.iterations = iterations
             # Load all the seeds, data types, devices etc.
-            # self.config.apply_seeds()
+            self.config.torch_seeds()
+            self.config.random_seeds()
+            self.config.numpy_seeds()
             # self.config.apply_float_type()
             # self.config.default_device()
 
             # In 1D problem we need to combine the BCs as there is only one point for each BC, which returns an undefined feature scaling because the ub and lb are same in the denominator, so we get infinity
             # For problem with multiple points on each boundary, we don't need to combine them.
-            if self.boundary_point_sample[0].size()[0] == 1: # if row is 1 in the particular boundary tensor
-                self.boundary_point_sample = torch.cat(self.boundary_point_sample, dim=0)
-                self.boundary_point_labels = torch.cat(self.boundary_point_labels, dim=0)
-            else:
-                self.boundary_point_sample = torch.cat(self.boundary_point_sample, dim=0)
-                self.boundary_point_labels = torch.cat(self.boundary_point_labels, dim=0)
+            #if self.boundary_point_sample[0].size()[0] == 1: # if row is 1 in the particular boundary tensor
+            self.boundary_point_sample = torch.cat(self.boundary_point_sample, dim=0)
+            self.boundary_point_labels = torch.cat(self.boundary_point_labels, dim=0)
+            # TODO: Currently all BCs are included in a single tensor. Meaning we can visualise/ print the BC loss on individual boundaries similar to DeepXDE.
+            # else:
+            #     self.boundary_point_sample = torch.cat(self.boundary_point_sample, dim=0)
+            #     self.boundary_point_labels = torch.cat(self.boundary_point_labels, dim=0)
 
             # Set requires_grad=True for self.collocation_point_sample
             self.collocation_point_sample.requires_grad = True
