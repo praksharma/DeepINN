@@ -34,6 +34,7 @@ Last work : `DeepINN/constraint/gradients.py`
 ## Misc
 - [x] Migrate to JupyterBooks. 
 - [x] Move everything after contribution in the [readme.md](readme.md) to the docs.
+- [ ] Refactor training process and move things to recipes. For now the first recipe will be vanilla PINN.
 
 ## Technical stuff
 - [ ] Substitute `raise NotImplementedError` to `@abc.abstractmethod` for better ABC implementation on concrete classes (classes where the member function are actually implemented).
