@@ -1,6 +1,6 @@
-torch==2.0.1
+torch
 matplotlib
-numpy==1.26.4
+numpy<2
 scikit-learn
 scikit-optimize
 scipy

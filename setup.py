@@ -13,7 +13,7 @@ setup(
     name="DeepINN",
     version='{{VERSION_PLACEHOLDER}}',
     author="Prakhar Sharma",
-    author_email="prakhars962@gmail.com",
+    author_email="prakhar.sharma@ukaea.uk",
     description="A Physics-informed neural network (PINN) library.",
     url = "https://deepinn.readthedocs.io/en/latest/index.html",
     long_description_content_type="text/markdown",

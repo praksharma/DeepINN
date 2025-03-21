@@ -1,4 +1,5 @@
-"""Domains handle the geometries of the underlying problems. Every input variable, that 
+"""
+Domains handle the geometries of the underlying problems. Every input variable, that 
 appears in the differentialequation has to get a domain, to which it belongs.
 Different 0D, 1D, 2D and 3D domains are pre implemented. For more complex domains four
 operations are implemented:
