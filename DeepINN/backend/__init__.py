@@ -22,7 +22,7 @@ def load_backend():
         import torch
         print(ascii_art, file=sys.stderr, flush=True) # print ascii art
         print("DeepINN version:" + __version__, file=sys.stderr, flush=True) # print DeepINN version
-        print("Using default backend: PyTorch", file=sys.stderr, flush=True)   # print backend name like an error # https://www.askpython.com/python/python-stdin-stdout-stderr
+        print("Using default backend: PyTorch(",torch.device(0).type,")", file=sys.stderr, flush=True)   # print backend name like an error # https://www.askpython.com/python/python-stdin-stdout-stderr
         print("Pytorch version: ",torch.__version__, file=sys.stderr, flush=True) # print pytorch version
 
     except ImportError:
